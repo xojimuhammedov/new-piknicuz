@@ -1,22 +1,31 @@
-import { Box, Heading, Link, SimpleGrid } from '@chakra-ui/react';
+import { Box, Flex, Heading, Link, SimpleGrid, Text } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import Card from './Card';
 import axios from 'axios';
 
+
 const Products = () => {
     const [product, setProduct] = useState([])
+    const [category, setCategory] = useState([])
     useEffect(() => {
         axios.get("https://picnic.propartnyor.uz/api/products")
             .then((res) => setProduct(res?.data?.data))
             .catch((err) => console.log(err))
     }, [])
+
+    useEffect(() => {
+        axios.get("https://picnic.propartnyor.uz/api/categories")
+            .then((res) => setCategory(res?.data?.data))
+            .catch((err) => console.log(err))
+    }, [])
+
     return (
         <Box p={'60px 0'}>
             <Box className='container'>
                 <Heading {...css.title}>Kategoriya va Mahsulotlar</Heading>
                 <SimpleGrid mb={'60px'} mt={'70px'} gap={'70px 24px'} columns={4}>
                     {
-                        product?.slice(0, 32)?.map((item, index) => (<Card item={item} />))
+                        product?.slice(0, 32)?.map((item) => (<Card item={item} />))
                     }
                 </SimpleGrid>
                 <Link href='#' {...css.link}>Hammasini ko'rish</Link>
@@ -48,5 +57,11 @@ const css = {
         justifyContent: "center",
         width: "152px",
         margin: "auto"
+    },
+    name: {
+        fontSize: "20px",
+        fontWeight: "400",
+        color: "#000",
+        lineHeight: "normal",
     }
 }

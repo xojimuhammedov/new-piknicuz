@@ -1,19 +1,22 @@
 import { Box, Flex, Heading, Image } from '@chakra-ui/react';
 import React from 'react';
 import CardKorzinka from '../assets/CardKorzinka';
+import { Link } from 'react-router-dom';
 
 const Card = ({ item }) => {
     return (
-        <Box key={item.id}>
-            <Box {...css.item}>
-                <Image {...css.image} src={`https://picnic.propartnyor.uz/api/uploads/images/${item?.image_src}`} />
+        <Link to={`/product/${item?.id}`}>
+            <Box key={item.id}>
+                <Box {...css.item}>
+                    <Image {...css.image} src={`https://picnic.propartnyor.uz/api/uploads/images/${item?.image_src}`} />
+                </Box>
+                <Heading {...css.name}>{item.title}</Heading>
+                <Flex justify={'space-between'} align={'center'}>
+                    <Heading {...css.price}>{item.price} so'm</Heading>
+                    <CardKorzinka />
+                </Flex>
             </Box>
-            <Heading {...css.name}>{item.title}</Heading>
-            <Flex justify={'space-between'} align={'center'}>
-                <Heading {...css.price}>{item.price} so'm</Heading>
-                <CardKorzinka />
-            </Flex>
-        </Box>
+        </Link>
     );
 }
 
