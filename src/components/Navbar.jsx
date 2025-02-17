@@ -4,12 +4,16 @@ import React from 'react';
 import LogoIcon from '../assets/logo.svg'
 import Korzinka from '../assets/Korzinka';
 
+import { Link as Alink } from 'react-router-dom'
+
 const Navbar = () => {
     return (
         <Box p={'15px 0'}>
             <Box className='container'>
                 <Flex align={'center'} justify={'space-between'}>
-                    <Image src={LogoIcon} alt='LogoIcon' />
+                    <Alink to={'/'}>
+                        <Image src={LogoIcon} alt='LogoIcon' />
+                    </Alink>
                     <Flex align={'center'} gap={'24px'}>
                         <Link {...css.link} href='#'>Bosh sahifa</Link>
                         <Link {...css.link} href='#'>Mahsulotlar</Link>
@@ -39,7 +43,7 @@ const css = {
 
         _hover: {
             color: "#245D30",
-            fontWeight:"500"
+            fontWeight: "500"
         }
     },
     input: {
