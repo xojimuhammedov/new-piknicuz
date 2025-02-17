@@ -2,6 +2,7 @@
     width: 100%;
     height: 100%;
 }
+
 .swiper-slide img {
     display: block;
     width: 100%;
@@ -56,4 +57,21 @@
     height: 100%;
     border-radius: 12px;
     object-fit: cover;
+}
+
+.course-video {
+    width: 100%;
+    object-fit: cover;
+    height: 600px;
+    margin-top: 20px;
+    border-radius: 20px;
+
+}
+
+
+@media (max-width: 768px) {
+    .course-video {
+        width: 100%;
+        height: auto;
+    }
 }

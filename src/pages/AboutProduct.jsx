@@ -1,6 +1,6 @@
-import { Box, Button, Flex, Heading, Image, Text } from '@chakra-ui/react';
+import { Box, Button, Flex, Heading, Image, Spinner, Text } from '@chakra-ui/react';
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -17,16 +17,39 @@ const AboutProduct = () => {
     const { id } = useParams()
     const [product, setProduct] = useState([])
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const videoRef = useRef();
+
+    useEffect(() => {
+        if (videoRef.current && product?.video_src) {
+            videoRef.current.load();
+            videoRef.current.play().catch((error) => {
+                console.error("Video cannot be played:", error);
+            });
+        }
+    }, [product?.video_src]);
 
     useEffect(() => {
         axios.get(`https://picnic.propartnyor.uz/api/products/${id}`)
             .then((res) => setProduct(res?.data?.data))
             .catch((err) => console.log(err))
+            .finally(() => {
+                setLoading(false);
+            })
     }, [id])
+
+    if (loading) {
+        <Spinner
+            thickness="4px"
+            speed="0.65s"
+            emptyColor="gray.200"
+            color="#245E2E"
+            size="xl"
+        />;
+    }
     return (
         <Box p={'24px 0'}>
             <Box className='container about-list'>
-                {/* <Flex gap={'72px'}> */}
                 <Flex width={'60%'} gap={'24px'}>
                     <Swiper
                         onSwiper={setThumbsSwiper}
@@ -80,7 +103,16 @@ const AboutProduct = () => {
                     />
                     <Button {...css.button}>Savatga qo'shish</Button>
                 </Box>
-                {/* </Flex> */}
+
+                <Heading mt={'-150px'} textAlign={'center'} {...css.title}>Mahsulot Videosi va Xususiyatlari</Heading>
+                {product?.video_src && (
+                    <video className="course-video" ref={videoRef} autoPlay loop controls>
+                        <source
+                            src={`https://picnic.propartnyor.uz/api/uploads/images/${product?.video_src}`}
+                            type="video/mp4"
+                        />
+                    </video>
+                )}
             </Box>
         </Box>
     );

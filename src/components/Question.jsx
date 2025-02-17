@@ -24,6 +24,61 @@ const Question = () => {
                             Siz tanlagan mahsulotni savatchaga qo‘shib, to‘lov jarayonini davom ettirish orqali buyurtma qilishingiz mumkin. Buyurtma jarayoni oddiy va qulay.
                         </AccordionPanel>
                     </AccordionItem>
+                    <AccordionItem {...css.items}>
+                        <AccordionButton p={"20px"}>
+                            <Box as="h2" {...css.name} flex="1" textAlign="left">
+                                To‘lov usullari qanday?
+                            </Box>
+                            <AccordionIcon />
+                        </AccordionButton>
+                        <AccordionPanel {...css.text} pb={4}>
+                            Siz tanlagan mahsulotni savatchaga qo‘shib, to‘lov jarayonini davom ettirish orqali buyurtma qilishingiz mumkin. Buyurtma jarayoni oddiy va qulay.
+                        </AccordionPanel>
+                    </AccordionItem>
+                    <AccordionItem {...css.items}>
+                        <AccordionButton p={"20px"}>
+                            <Box as="h2" {...css.name} flex="1" textAlign="left">
+                                Mahsulotlarni qaytarish mumkinmi?
+                            </Box>
+                            <AccordionIcon />
+                        </AccordionButton>
+                        <AccordionPanel {...css.text} pb={4}>
+                            Siz tanlagan mahsulotni savatchaga qo‘shib, to‘lov jarayonini davom ettirish orqali buyurtma qilishingiz mumkin. Buyurtma jarayoni oddiy va qulay.
+                        </AccordionPanel>
+                    </AccordionItem>
+                    <AccordionItem {...css.items}>
+                        <AccordionButton p={"20px"}>
+                            <Box as="h2" {...css.name} flex="1" textAlign="left">
+                                Mahsulotlar kafolatlanganmi?
+                            </Box>
+                            <AccordionIcon />
+                        </AccordionButton>
+                        <AccordionPanel {...css.text} pb={4}>
+                            Siz tanlagan mahsulotni savatchaga qo‘shib, to‘lov jarayonini davom ettirish orqali buyurtma qilishingiz mumkin. Buyurtma jarayoni oddiy va qulay.
+                        </AccordionPanel>
+                    </AccordionItem>
+                    <AccordionItem {...css.items}>
+                        <AccordionButton p={"20px"}>
+                            <Box as="h2" {...css.name} flex="1" textAlign="left">
+                                Sayohat mahsulotlarini tanlashda yordam bera olasizmi?
+                            </Box>
+                            <AccordionIcon />
+                        </AccordionButton>
+                        <AccordionPanel {...css.text} pb={4}>
+                            Siz tanlagan mahsulotni savatchaga qo‘shib, to‘lov jarayonini davom ettirish orqali buyurtma qilishingiz mumkin. Buyurtma jarayoni oddiy va qulay.
+                        </AccordionPanel>
+                    </AccordionItem>
+                    <AccordionItem {...css.items}>
+                        <AccordionButton p={"20px"}>
+                            <Box as="h2" {...css.name} flex="1" textAlign="left">
+                                Mahsulotlarni ko‘rish uchun oflayn do‘koningiz bormi?
+                            </Box>
+                            <AccordionIcon />
+                        </AccordionButton>
+                        <AccordionPanel {...css.text} pb={4}>
+                            Siz tanlagan mahsulotni savatchaga qo‘shib, to‘lov jarayonini davom ettirish orqali buyurtma qilishingiz mumkin. Buyurtma jarayoni oddiy va qulay.
+                        </AccordionPanel>
+                    </AccordionItem>
                 </Accordion>
             </Box>
         </Box>
@@ -44,7 +99,7 @@ const css = {
         background: "#F5F5F5",
         borderRadius: "16px !important",
         width: "792px",
-        margin:"16px auto"
+        margin: "16px auto"
     },
     name: {
         fontSize: "22px",
@@ -57,6 +112,6 @@ const css = {
         fontSize: "16px",
         fontWeight: "400",
         lineHeight: "24px",
-        paddingLeft:"20px"
+        paddingLeft: "20px"
     }
 }
