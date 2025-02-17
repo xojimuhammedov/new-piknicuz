@@ -120,6 +120,7 @@ const css = {
         margin: "10px 6px",
         color: "#fff",
         fontSize: "18px",
-        fontWeight: "600"
+        fontWeight: "600",
+        cursor: "pointer"
     }
 }
