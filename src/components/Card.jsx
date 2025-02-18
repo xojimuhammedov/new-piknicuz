@@ -1,22 +1,26 @@
-import { Box, Flex, Heading, Image } from '@chakra-ui/react';
+import { Box, Button, Flex, Heading, Image } from '@chakra-ui/react';
 import React from 'react';
 import CardKorzinka from '../assets/CardKorzinka';
 import { Link } from 'react-router-dom';
+import { useCart } from '../context/CardContext';
 
 const Card = ({ item }) => {
+    const { addToCart } = useCart();
     return (
-        <Link to={`/product/${item?.id}`}>
-            <Box key={item.id}>
+        <Box key={item.id}>
+            <Link to={`/product/${item?.id}`}>
                 <Box {...css.item}>
                     <Image {...css.image} src={`https://picnic.propartnyor.uz/api/uploads/images/${item?.image_src}`} />
                 </Box>
-                <Heading {...css.name}>{item.title}</Heading>
-                <Flex justify={'space-between'} align={'center'}>
-                    <Heading {...css.price}>{item.price} so'm</Heading>
+            </Link>
+            <Heading {...css.name}>{item.title}</Heading>
+            <Flex justify={'space-between'} align={'center'}>
+                <Heading {...css.price}>{item.price} so'm</Heading>
+                <Button {...css.button} onClick={() => addToCart(item)}>
                     <CardKorzinka />
-                </Flex>
-            </Box>
-        </Link>
+                </Button>
+            </Flex>
+        </Box>
     );
 }
 
@@ -50,5 +54,10 @@ const css = {
         lineHeight: "normal",
         color: "#000",
         margin: "0"
+    },
+    button: {
+        background: "transparent",
+        border: "none",
+        cursor: "pointer"
     }
 }

@@ -5,8 +5,11 @@ import LogoIcon from '../assets/logo.svg'
 import Korzinka from '../assets/Korzinka';
 
 import { Link as Alink } from 'react-router-dom'
+import { useCart } from '../context/CardContext';
 
 const Navbar = () => {
+    const { cart, removeFromCart } = useCart();
+
     return (
         <Box p={'15px 0'}>
             <Box className='container'>
@@ -22,7 +25,9 @@ const Navbar = () => {
                     </Flex>
                     <Flex align={'center'} gap={'24px'}>
                         <Input {...css.input} placeholder={"Search for products..."} />
-                        <Korzinka />
+                        <Alink to={'/korzinka'}>
+                            <Korzinka />
+                        </Alink>
                     </Flex>
                 </Flex>
             </Box>

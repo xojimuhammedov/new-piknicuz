@@ -8,6 +8,7 @@ import Question from './components/Question'
 import BlogPage from './pages/BlogPage'
 import ContactPage from './pages/ContactPage'
 import AboutProduct from './pages/AboutProduct'
+import KorzinkaPage from './pages/KorzinkaPage'
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
         <Route path='/blog' element={<BlogPage />} />
         <Route path='/contact' element={<ContactPage />} />
         <Route path='/product/:id' element={<AboutProduct />} />
+        <Route path='/korzinka' element={<KorzinkaPage />} />
       </Routes>
       <Footer />
     </>
