@@ -23,7 +23,7 @@ const Products = () => {
         <Box p={'60px 0'}>
             <Box className='container'>
                 <Heading {...css.title}>Kategoriya va Mahsulotlar</Heading>
-                <SimpleGrid mb={'60px'} mt={'70px'} gap={'70px 24px'} columns={4}>
+                <SimpleGrid mb={'60px'} mt={'70px'} gap={'70px 24px'} columns={{ base: 1, md: 2, xl: 4 }}>
                     {
                         product?.slice(0, 32)?.map((item) => (<Card item={item} />))
                     }
