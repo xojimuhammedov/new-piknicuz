@@ -69,7 +69,8 @@ const css = {
         lineHeight: "normal",
         fontWeight: "700",
         color: "#011334",
-        width: "500px"
+        width: "500px",
+        margin: "12px 0"
     },
     text: {
         color: "#011334",
@@ -90,37 +91,32 @@ const css = {
         border: '1px solid var(--Gray-3, #828282)',
         background: ' #F9F9F9',
         width: "100%",
-        padding: "16px 0",
-        paddingLeft: "12px",
+        padding: "24px 12px",
         margin: "12px 0",
-
-        _focus: {
-            outline: '1px solid var(--Gray-3, #245D30)',
-        }
     },
     textarea: {
         borderRadius: '10px',
         border: '1px solid var(--Gray-3, #828282)',
         background: ' #F9F9F9',
         width: "100%",
-        padding: "16px 0",
-        paddingLeft: "12px",
-        height: "70px",
-
-        _focus: {
-            outline: '1px solid var(--Gray-3, #245D30)',
-        }
+        padding: "16px 12px",
+        height: "120px",
     },
     button: {
         borderRadius: '20px',
         border: '1px solid #245D30',
         background: '#245D30',
         width: "100%",
-        height: "45px",
+        height: "50px",
         margin: "10px 6px",
         color: "#fff",
         fontSize: "18px",
         fontWeight: "600",
-        cursor: "pointer"
+        cursor: "pointer",
+        marginTop: "24px",
+
+        _hover: {
+            background: '#245D30',
+        }
     }
 }

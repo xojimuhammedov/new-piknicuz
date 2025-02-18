@@ -44,15 +44,16 @@ const css = {
         lineHeight: "64px",
         fontWeight: "700",
         color: "#000",
-        width: "600px",
-        margin: "0"
+        width: "580px",
+        margin: "12px 0"
     },
     text: {
         color: "rgba(0, 0, 0, 0.60)",
         fontSize: "16px",
         lineHeight: "22px",
         fontWeight: "400",
-        width: "600px"
+        width: "580px",
+        marginBottom: "24px"
     },
     link: {
         background: "#245D30",

@@ -1,9 +1,10 @@
-import { Box, Button, Flex, Heading, Image } from '@chakra-ui/react';
+import { Box, Button, Flex, Heading, Image, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Textarea, useDisclosure } from '@chakra-ui/react';
 import React from 'react';
 import DeleteIcon from '../assets/DeleteIcon';
 import { useCart } from '../context/CardContext';
 
 const KorzinkaPage = () => {
+    const { isOpen, onOpen, onClose } = useDisclosure()
     const { cart, removeFromCart, updateQuantity } = useCart();
     const totalPrice = cart?.reduce((total, item) => total + Number(item.price) * item.count, 0);
     return (
@@ -11,23 +12,23 @@ const KorzinkaPage = () => {
             <Box className='container'>
                 <Heading {...css.title}>Sizning savatingiz</Heading>
                 <Flex mt={'45px'} gap={'20px'}>
-                    <Flex flexDirection={'column'} gap={'24px'} {...css.box}>
+                    <Flex flexDirection={'column'} gap={'12px'} {...css.box}>
                         {
                             cart?.map((item, index) => (
-                                <Flex key={index} gap={'24px'} w={'100%'}>
+                                <Flex align={'center'} key={index} gap={'24px'} w={'100%'}>
                                     <Box {...css.card}>
                                         <Image {...css.image} src={`https://picnic.propartnyor.uz/api/uploads/images/${item?.image_src}`} />
                                     </Box>
                                     <Box w={'100%'}>
-                                        <Flex justifyContent={'space-between'}>
+                                        <Flex align={'center'} justifyContent={'space-between'}>
                                             <Heading {...css.name}>{item?.title}</Heading>
                                             <Button onClick={() => removeFromCart(item.id)} {...css.button}>
                                                 <DeleteIcon />
                                             </Button>
                                         </Flex>
-                                        <Flex mt={'60px'} justifyContent={'space-between'}>
+                                        <Flex align={'center'} mt={'60px'} justifyContent={'space-between'}>
                                             <Heading fontSize={'24px'} {...css.name}>{item.price} so'm</Heading>
-                                            <Flex {...css.bottom}>
+                                            <Flex align={'center'} {...css.bottom}>
                                                 <Button onClick={() => updateQuantity(item.id, -1)} {...css.click}>
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                                                         <path d="M17.8125 10C17.8125 10.2486 17.7137 10.4871 17.5379 10.6629C17.3621 10.8387 17.1236 10.9375 16.875 10.9375H3.125C2.87636 10.9375 2.6379 10.8387 2.46209 10.6629C2.28627 10.4871 2.1875 10.2486 2.1875 10C2.1875 9.75136 2.28627 9.5129 2.46209 9.33709C2.6379 9.16127 2.87636 9.0625 3.125 9.0625H16.875C17.1236 9.0625 17.3621 9.16127 17.5379 9.33709C17.7137 9.5129 17.8125 9.75136 17.8125 10Z" fill="black" />
@@ -52,10 +53,30 @@ const KorzinkaPage = () => {
                             <Heading {...css.subname}>Umumiy</Heading>
                             <Heading {...css.price}>{totalPrice} so'm</Heading>
                         </Flex>
-                        <Button {...css.submit}>Buyurtma berish</Button>
+                        <Button mt={'60px'} onClick={onOpen} {...css.submit}>Buyurtma berish</Button>
                     </Box>
                 </Flex>
             </Box>
+            <Modal isCentered isOpen={isOpen} onClose={onClose}>
+                <ModalOverlay />
+                <ModalContent>
+
+                    <ModalCloseButton />
+                    <ModalBody>
+                        <Heading textAlign={'center'} mb={'60px'} mt={'36px'} {...css.name}>Buyurtma Berish Ma'lumotlarini Kiriting</Heading>
+                        <Input type='text' {...css.input} placeholder='To‘liq ism va familiyangizni kiriting' />
+                        <Input type='tell' {...css.input} placeholder='Telefon raqam' />
+                        <Input type='text' {...css.input} placeholder='Manzilingizni kiriting' />
+                        <Textarea placeholder='Xabar' {...css.textarea} />
+                    </ModalBody>
+
+                    <ModalFooter>
+                        <Button mt={'12px'} height={'45px !important'} {...css.submit}>
+                            Yuborish
+                        </Button>
+                    </ModalFooter>
+                </ModalContent>
+            </Modal>
         </Box>
     );
 }
@@ -84,12 +105,17 @@ const css = {
         borderRadius: '20px',
         border: '1px solid rgba(0, 0, 0, 0.10)',
         padding: "30px 24px",
-        width: `calc(100% - 790px)`
+        width: `calc(100% - 790px)`,
+        height: "340px"
     },
     button: {
         background: "transparent",
         border: "none",
-        cursor: "pointer"
+        cursor: "pointer",
+
+        _hover: {
+            background: "transparent"
+        }
     },
     name: {
         fontSize: "20px",
@@ -120,17 +146,42 @@ const css = {
         color: "#fff",
         fontWeight: "500",
         fontSize: "16px",
-        marginTop: "60px",
-        cursor: "pointer"
+        cursor: "pointer",
+
+        _hover: {
+            background: "#245D30"
+        }
     },
     bottom: {
         background: "#F0F0F0",
         borderRadius: "62px",
-        padding: "12px 20px"
+        padding: "8px 16px",
+        gap: "12px"
     },
     click: {
         background: "transparent",
         border: "none",
         cursor: "pointer",
-    }
+
+        _hover: {
+            background: "transparent"
+        }
+    },
+    input: {
+        borderRadius: '10px',
+        border: '1px solid var(--Gray-3, #828282)',
+        background: ' #F9F9F9',
+        width: "100%",
+        padding: "24px 12px",
+        margin: "12px 0",
+    },
+    textarea: {
+        borderRadius: '10px',
+        border: '1px solid var(--Gray-3, #828282)',
+        background: ' #F9F9F9',
+        width: "100%",
+        padding: "16px 12px",
+        height: "120px",
+        marginTop: "12px"
+    },
 }
