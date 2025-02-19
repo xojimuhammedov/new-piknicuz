@@ -7,7 +7,7 @@ const Footer = () => {
     return (
         <Box {...css.footer}>
             <Box className='container'>
-                <SimpleGrid columns={3}>
+                <SimpleGrid gap={'24px'} columns={{ base: 1, lg: 3 }}>
                     <Box>
                         <Image {...css.image} src={LogoIcon} alt='LogoIcon' />
                     </Box>
@@ -35,7 +35,10 @@ export default Footer;
 const css = {
     footer: {
         background: "#245D30",
-        padding: "78px 0"
+        padding: {
+            base: "36px 0",
+            lg: "78px 0"
+        }
     },
     link: {
         fontSize: "16px",
@@ -53,8 +56,8 @@ const css = {
         letterSpacing: "3px",
         marginBottom: "16px"
     },
-    image:{
-        width:"100px",
-        height:"100px"
+    image: {
+        width: "100px",
+        height: "100px"
     }
 }

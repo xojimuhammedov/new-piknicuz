@@ -45,6 +45,10 @@ const css = {
         fontWeight: "500",
         color: "#000",
         transition: "0.3s",
+        display: {
+            base: "none",
+            lg: "block"
+        },
 
         _hover: {
             color: "#245D30",
@@ -57,6 +61,10 @@ const css = {
         padding: "10px 16px",
         width: "278px",
         border: "none",
+        display: {
+            base: "none",
+            lg: "block"
+        },
 
         _focus: {
             border: "none",

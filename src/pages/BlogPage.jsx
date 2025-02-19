@@ -5,11 +5,11 @@ import HeaderImage from '../assets/image.png'
 
 const BlogPage = () => {
     return (
-        <Box p={'60px 0'}>
+        <Box p={{ base: "36px 0", lg: '60px 0' }}>
             <Box className='container'>
                 <Heading {...css.title}>Sayohat va Lager Blogi</Heading>
                 <Text {...css.text}>Sayohatni sevuvchilar uchun qiziqarli hikoyalar, foydali maslahatlar va lager hayoti haqida ko‘rsatmalar. Tabiatga yaqin bo‘lish va sayohatlaringizni unutilmas qilish uchun o‘z bilimlaringizni boyiting!</Text>
-                <SimpleGrid gap={'48px'} columns={3}>
+                <SimpleGrid mt={'36px'} gap={{ base: "24px", lg: '48px' }} columns={{ base: 1, lg: 3 }}>
                     <Box>
                         <Image  {...css.image} src={HeaderImage} alt='BlogImage' />
                         <Heading {...css.name}>Tabiatning Qiziqarli Jihatlari: Sarg‘aygan Amazon O‘rmonlari Haqida Qiziqarli Faktlar</Heading>
@@ -34,17 +34,29 @@ const css = {
     title: {
         margin: "0",
         textAlign: "center",
-        fontSize: "50px",
+        fontSize: {
+            base: "25px",
+            lg: "50px"
+        },
         fontWeight: "700",
         lineHeight: "normal"
     },
     text: {
-        fontSize: "18px",
+        fontSize: {
+            base: "14px",
+            lg: "18px"
+        },
         color: "#626262",
-        lineHeight: "25px",
+        lineHeight: {
+            base: "20px",
+            lg: "25px"
+        },
         fontWeight: "400",
         textAlign: "center",
-        width: "732px",
+        width: {
+            base: "100%",
+            lg: "732px"
+        },
         margin: "16px auto"
     },
     image: {
@@ -54,7 +66,10 @@ const css = {
         objectFit: "cover"
     },
     name: {
-        fontSize: "18px",
+        fontSize: {
+            base: "16px",
+            lg: "18px"
+        },
         fontWeight: "600",
         lineHeight: "26px"
     }

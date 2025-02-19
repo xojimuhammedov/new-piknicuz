@@ -22,11 +22,19 @@ export default ContactPage;
 
 const css = {
     image: {
-        width: "100%"
+        width: "100%",
+        height: {
+            base: "300px",
+            lg: "auto"
+        },
+        objectFit:"cover"
     },
     title: {
         color: "#fff",
-        fontSize: "50px",
+        fontSize: {
+            base: "25px",
+            lg: "50px"
+        },
         lineHeight: "normal",
         fontWeight: "800",
         position: "absolute",

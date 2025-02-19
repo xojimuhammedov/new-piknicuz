@@ -13,17 +13,17 @@ const Products = () => {
             .catch((err) => console.log(err))
     }, [])
 
-    useEffect(() => {
-        axios.get("https://picnic.propartnyor.uz/api/categories")
-            .then((res) => setCategory(res?.data?.data))
-            .catch((err) => console.log(err))
-    }, [])
+    // useEffect(() => {
+    //     axios.get("https://picnic.propartnyor.uz/api/categories")
+    //         .then((res) => setCategory(res?.data?.data))
+    //         .catch((err) => console.log(err))
+    // }, [])
 
     return (
         <Box p={'60px 0'}>
             <Box className='container'>
                 <Heading {...css.title}>Kategoriya va Mahsulotlar</Heading>
-                <SimpleGrid mb={'60px'} mt={'70px'} gap={'70px 24px'} columns={{ base: 1, md: 2, xl: 4 }}>
+                <SimpleGrid mb={'60px'} mt={{ base: "36px", lg: '70px' }} gap={{ base: "24px", lg: '70px 24px' }} columns={{ base: 1, md: 2, xl: 4 }}>
                     {
                         product?.slice(0, 32)?.map((item) => (<Card item={item} />))
                     }
@@ -40,7 +40,10 @@ const css = {
     title: {
         margin: "0",
         textAlign: "center",
-        fontSize: "50px",
+        fontSize: {
+            base: "25px",
+            lg: "50px"
+        },
         fontWeight: "700",
         lineHeight: "normal"
     },
@@ -55,7 +58,10 @@ const css = {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        width: "152px",
+        width: {
+            base: "100%",
+            lg: "152px"
+        },
         margin: "auto"
     },
     name: {

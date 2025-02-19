@@ -91,27 +91,42 @@ const css = {
     title: {
         margin: "0",
         textAlign: "center",
-        fontSize: "50px",
+        fontSize: {
+            base: "25px",
+            lg: "50px"
+        },
         fontWeight: "700",
         lineHeight: "normal"
     },
     items: {
         background: "#F5F5F5",
         borderRadius: "16px !important",
-        width: "792px",
+        width: {
+            base: "100%",
+            lg: "792px"
+        },
         margin: "16px auto"
     },
     name: {
-        fontSize: "22px",
+        fontSize: {
+            base: "16px",
+            lg: "22px"
+        },
         fontWeight: "600",
         lineHeight: "28px",
         color: "#151515"
     },
     text: {
         color: "#747474",
-        fontSize: "16px",
+        fontSize: {
+            base: "12px",
+            lg: "16px"
+        },
         fontWeight: "400",
-        lineHeight: "24px",
+        lineHeight: {
+            base: "20px",
+            lg: "24px"
+        },
         paddingLeft: "20px"
     }
 }

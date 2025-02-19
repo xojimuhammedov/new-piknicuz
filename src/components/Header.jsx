@@ -5,9 +5,9 @@ import HeaderImage from '../assets/image.png'
 
 const Header = () => {
     return (
-        <Box p={'60px 0'}>
+        <Box p={{ base: "24px 0", lg: '60px 0' }}>
             <Box className='container'>
-                <Flex justify={'space-between'}>
+                <Flex gap={'24px'} flexDirection={{ base: "column", lg: "row" }} justify={'space-between'}>
                     <Box>
                         <Heading {...css.title}>
                             Zo'r jihozlar bilan sarguzashtlarni kashf eting
@@ -40,19 +40,38 @@ export default Header;
 
 const css = {
     title: {
-        fontSize: "60px",
-        lineHeight: "64px",
+        fontSize: {
+            base: "25px",
+            lg: "60px"
+        },
+        lineHeight: {
+            base: "normal",
+            lg: "64px"
+        },
         fontWeight: "700",
         color: "#000",
-        width: "580px",
-        margin: "12px 0"
+        width: {
+            base: "100%",
+            lg: "580px"
+        },
+        margin: "12px 0",
+        textAlign: {
+            base: "center",
+            lg: "start"
+        }
     },
     text: {
         color: "rgba(0, 0, 0, 0.60)",
-        fontSize: "16px",
+        fontSize: {
+            base: "14px",
+            lg: "16px"
+        },
         lineHeight: "22px",
         fontWeight: "400",
-        width: "580px",
+        width: {
+            base: "100%",
+            lg: "580px"
+        },
         marginBottom: "24px"
     },
     link: {
@@ -61,7 +80,10 @@ const css = {
         color: "#fff",
         fontSize: "16px",
         fontWeight: "500",
-        width: "210px",
+        width: {
+            base: "100%",
+            lg: "210px"
+        },
         height: "52px",
         display: "flex",
         alignItems: "center",
@@ -69,18 +91,28 @@ const css = {
     },
     image: {
         objectFit: "cover",
-        height: "460px"
+        height: {
+            base: "280px",
+            lg: "460px"
+        },
+        borderRadius: "10px"
     },
     name: {
         margin: "0",
-        fontSize: "40px",
+        fontSize: {
+            base: "24px",
+            lg: "40px"
+        },
         lineHeight: "normal",
         fontWeight: "700",
         color: "#000"
     },
     subname: {
         color: "rgba(0, 0, 0, 0.60)",
-        fontSize: "16px",
+        fontSize: {
+            base: "10px",
+            lg: "16px"
+        },
         lineHeight: "22px",
         margin: "0",
         fontWeight: "400",
