@@ -11,7 +11,7 @@ const KorzinkaPage = () => {
         <Box p={'48px 0'}>
             <Box className='container'>
                 <Heading {...css.title}>Sizning savatingiz</Heading>
-                <Flex mt={'45px'} gap={'20px'}>
+                <Flex flexDirection={{ base: "column", lg: "row" }} mt={'45px'} gap={'20px'}>
                     <Flex flexDirection={'column'} gap={'12px'} {...css.box}>
                         {
                             cart?.map((item, index) => (
@@ -94,7 +94,10 @@ const css = {
         borderRadius: '20px',
         border: '1px solid rgba(0, 0, 0, 0.10)',
         padding: "30px 24px",
-        width: "715px"
+        width: {
+            base: "100%",
+            lg: "715px"
+        }
     },
     subname: {
         fontSize: "20px",
@@ -105,7 +108,10 @@ const css = {
         borderRadius: '20px',
         border: '1px solid rgba(0, 0, 0, 0.10)',
         padding: "30px 24px",
-        width: `calc(100% - 790px)`,
+        width: {
+            base: "100%",
+            lg: `calc(100% - 790px)`
+        },
         height: "340px"
     },
     button: {
@@ -141,7 +147,10 @@ const css = {
         background: "#245D30",
         borderRadius: "62px",
         border: "none",
-        height: "60px",
+        height: {
+            base: "50px",
+            lg: "60px"
+        },
         width: "100%",
         color: "#fff",
         fontWeight: "500",
