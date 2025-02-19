@@ -1,4 +1,4 @@
-import { Box, Flex, Image, Input, Link } from '@chakra-ui/react';
+import { Box, Flex, Image, Input, Link, Text } from '@chakra-ui/react';
 import React from 'react';
 
 import LogoIcon from '../assets/logo.svg'
@@ -21,7 +21,9 @@ const Navbar = () => {
                         <Link {...css.link} href='#'>Bosh sahifa</Link>
                         <Link {...css.link} href='#'>Mahsulotlar</Link>
                         <Link {...css.link} href='#'>Aloqa</Link>
-                        <Link {...css.link} href='#'>Blog</Link>
+                        <Alink to={'/blog'}>
+                            <Text {...css.link}>Blog</Text>
+                        </Alink>
                     </Flex>
                     <Flex align={'center'} gap={'24px'}>
                         <Input {...css.input} placeholder={"Search for products..."} />

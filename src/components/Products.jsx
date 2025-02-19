@@ -60,7 +60,7 @@ const css = {
         justifyContent: "center",
         width: {
             base: "100%",
-            lg: "152px"
+            lg: "265px"
         },
         margin: "auto"
     },
