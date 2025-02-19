@@ -25,8 +25,8 @@ function App() {
         } />
         <Route path='/blog' element={<BlogPage />} />
         <Route path='/contact' element={<ContactPage />} />
-        {/* <Route path='/product/:id' element={<AboutProduct />} />
-        <Route path='/korzinka' element={<KorzinkaPage />} /> */}
+        <Route path='/product/:id' element={<AboutProduct />} />
+        <Route path='/korzinka' element={<KorzinkaPage />} />
       </Routes>
       <Footer />
     </>

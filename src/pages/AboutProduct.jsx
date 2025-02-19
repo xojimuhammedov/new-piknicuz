@@ -50,7 +50,7 @@ const AboutProduct = () => {
     return (
         <Box p={'24px 0'}>
             <Box className='container about-list'>
-                <Flex width={'60%'} gap={'24px'}>
+                <Flex width={{ base: "100%", lg: '60%' }} gap={'24px'}>
                     <Swiper
                         onSwiper={setThumbsSwiper}
                         spaceBetween={20}
@@ -104,7 +104,20 @@ const AboutProduct = () => {
                     <Button {...css.button}>Savatga qo'shish</Button>
                 </Box>
 
-                <Heading mt={'-150px'} textAlign={'center'} {...css.title}>Mahsulot Videosi va Xususiyatlari</Heading>
+                <Box {...css.rights}>
+                    <Heading {...css.title}>{product?.title}</Heading>
+                    <Heading {...css.price}>{product?.price} so'm</Heading>
+                    <Text {...css.text}
+                        dangerouslySetInnerHTML={{
+                            __html: product?.description
+                        }}
+                    />
+                    <Button {...css.button}>Savatga qo'shish</Button>
+                </Box>
+
+                <Heading mt={{
+                    base: "36px", lg: '-150px'
+                }} textAlign={'center'} {...css.title}>Mahsulot Videosi va Xususiyatlari</Heading>
                 {product?.video_src && (
                     <video className="course-video" ref={videoRef} autoPlay loop controls>
                         <source
@@ -123,8 +136,14 @@ export default AboutProduct;
 const css = {
     item: {
         background: "#E9F8EC",
-        width: "85%",
-        height: "530px",
+        width: {
+            base: "100%",
+            lg: "85%"
+        },
+        height: {
+            base: "330px",
+            lg: "530px"
+        },
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -138,7 +157,10 @@ const css = {
         borderRadius: "20px",
     },
     title: {
-        fontSize: "36px",
+        fontSize: {
+            base: "24px",
+            lg: "36px"
+        },
         lineHeight: "normal",
         fontWeight: "700",
         marginBottom: "24px"
@@ -160,7 +182,10 @@ const css = {
         borderRadius: "62px",
         height: "45px",
         border: "none",
-        width: "300px",
+        width: {
+            base: "100%",
+            lg: "300px"
+        },
         cursor: "pointer",
         fontSize: "16px",
         lineHeight: "24px",
@@ -178,6 +203,17 @@ const css = {
     right: {
         position: "relative",
         left: "65%",
-        bottom: "550px"
+        bottom: "550px",
+        display: {
+            base: "none",
+            lg: "block"
+        }
+    },
+    rights: {
+        marginTop: "24px",
+        display: {
+            base: "block",
+            lg: "none"
+        }
     }
 }
