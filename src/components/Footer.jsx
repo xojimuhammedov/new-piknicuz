@@ -1,7 +1,10 @@
-import { background, Box, Heading, Image, Link, SimpleGrid } from '@chakra-ui/react';
+import { Box, Heading, Image, Link, SimpleGrid, Text } from '@chakra-ui/react';
 import React from 'react';
 
 import LogoIcon from '../assets/logo.svg'
+import InstagramIcon from '../assets/InstagramIcon';
+
+import { Link as ALink } from 'react-router-dom'
 
 const Footer = () => {
     return (
@@ -10,13 +13,20 @@ const Footer = () => {
                 <SimpleGrid gap={'24px'} columns={{ base: 1, lg: 3 }}>
                     <Box>
                         <Image {...css.image} src={LogoIcon} alt='LogoIcon' />
+                        <Link target='_blank' href='https://www.instagram.com/Piknic_uz'>
+                            <InstagramIcon />
+                        </Link>
                     </Box>
                     <Box>
                         <Heading {...css.name}>Kompaniya</Heading>
                         <Link {...css.link} href='#'>Bosh sahifa</Link>
                         <Link {...css.link} href='#'>Mahsulotlar</Link>
-                        <Link {...css.link} href='#'>Aloqa</Link>
-                        <Link {...css.link} href='#'>Blog</Link>
+                        <ALink to={'/contact'}>
+                            <Text {...css.link}>Aloqa</Text>
+                        </ALink>
+                        <ALink to={'/blog'}>
+                            <Text {...css.link}>Blog</Text>
+                        </ALink>
                     </Box>
                     <Box>
                         <Heading {...css.name}>Aloqa</Heading>
@@ -58,6 +68,7 @@ const css = {
     },
     image: {
         width: "100px",
-        height: "100px"
+        height: "100px",
+        marginBottom: "24px"
     }
 }

@@ -1,36 +1,98 @@
-import { Box, Flex, Heading, Link, SimpleGrid, Text } from '@chakra-ui/react';
-import React, { useEffect, useState } from 'react';
+import { Box, Button, Flex, Heading, Link, SimpleGrid, Text } from '@chakra-ui/react';
+import React, { useEffect, useRef, useState } from 'react';
 import Card from './Card';
 import axios from 'axios';
 
 
+
 const Products = () => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [categoryId, setCategoryId] = useState(null)
     const [product, setProduct] = useState([])
     const [category, setCategory] = useState([])
     useEffect(() => {
         axios.get("https://picnic.propartnyor.uz/api/products")
-            .then((res) => setProduct(res?.data?.data))
+            .then((res) => {
+                if (categoryId) {
+                    setProduct(res?.data?.data?.filter((item) => item.category_id === categoryId))
+                }
+                else {
+                    setProduct(res?.data?.data)
+                }
+            })
+            .catch((err) => console.log(err))
+    }, [categoryId])
+
+    useEffect(() => {
+        axios.get("https://picnic.propartnyor.uz/api/categories")
+            .then((res) => setCategory(res?.data?.data))
             .catch((err) => console.log(err))
     }, [])
 
-    // useEffect(() => {
-    //     axios.get("https://picnic.propartnyor.uz/api/categories")
-    //         .then((res) => setCategory(res?.data?.data))
-    //         .catch((err) => console.log(err))
-    // }, [])
+    const ITEMS_PER_PAGE = 5;
+
+    const totalSlides = Math.ceil(category.length / ITEMS_PER_PAGE);
+
+    const nextSlide = () => {
+        setCurrentIndex((prev) => (prev < totalSlides - 1 ? prev + 1 : 0));
+    };
+
+    const prevSlide = () => {
+        setCurrentIndex((prev) => (prev > 0 ? prev - 1 : totalSlides - 1));
+    };
 
     return (
-        <Box p={'60px 0'}>
+        <>
+            <Box position="relative" className='products' p={'60px 0'}>
+                <Box className='container'>
+                    <Heading {...css.title}>Kategoriya va Mahsulotlar</Heading>
+                    <Flex mt={'84px'} wrap={'nowrap'} justify="space-between" maxW="100%">
+                        {category
+                            ?.slice(currentIndex * ITEMS_PER_PAGE, (currentIndex + 1) * ITEMS_PER_PAGE)
+                            ?.map((category, index) => (
+                                <Heading onClick={() => setCategoryId(category?.id)} className={`product-title ${category?.id === categoryId ? "product-active" : ""}`} key={index} {...css.names}>
+                                    {category?.name}
+                                </Heading>
+                            ))}
+                    </Flex>
+
+
+                    <Button
+                        position="absolute"
+                        top="50%"
+                        left="93%"
+                        transform="translateY(-50%)"
+                        onClick={prevSlide}
+                        px={4}
+                        py={2}
+                        {...css.next}
+                    >
+                        ❮
+                    </Button>
+
+                    <Button
+                        position="absolute"
+                        top="50%"
+                        right="10px"
+                        transform="translateY(-50%)"
+                        onClick={nextSlide}
+                        px={4}
+                        py={2}
+                        {...css.next}
+                    >
+                        ❯
+                    </Button>
+                </Box>
+            </Box>
             <Box className='container'>
-                <Heading {...css.title}>Kategoriya va Mahsulotlar</Heading>
-                <SimpleGrid mb={'60px'} mt={{ base: "36px", lg: '70px' }} gap={{ base: "24px", lg: '70px 24px' }} columns={{ base: 1, md: 2, xl: 4 }}>
+                <SimpleGrid mb={'60px'} gap={{ base: "24px", lg: '70px 24px' }} columns={{ base: 1, md: 2, xl: 4 }}>
                     {
                         product?.slice(0, 32)?.map((item) => (<Card item={item} />))
                     }
                 </SimpleGrid>
                 <Link href='#' {...css.link}>Hammasini ko'rish</Link>
             </Box>
-        </Box>
+        </>
     );
 }
 
@@ -45,7 +107,7 @@ const css = {
             lg: "50px"
         },
         fontWeight: "700",
-        lineHeight: "normal"
+        lineHeight: "normal",
     },
     link: {
         fontSize: "16px",
@@ -69,5 +131,27 @@ const css = {
         fontWeight: "400",
         color: "#000",
         lineHeight: "normal",
+    },
+    names: {
+        fontSize: "20px",
+        fontWeight: "400",
+        cursor: "pointer",
+        padding: "10px 20px",
+        borderRadius: "30px",
+        border: "1px solid #fff",
+
+        _hover: {
+            border: "1px solid #000"
+        }
+    },
+    next: {
+        color: "#fff",
+        background: "#245D30",
+        borderRadius: "full",
+        cursor: "pointer",
+
+        _hover: {
+            background: "#245D30",
+        }
     }
 }

@@ -67,6 +67,33 @@
     border-radius: 20px;
 }
 
+.products .swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.products .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical
+}
+
+.product-active {
+    border: 1px solid #000 !important;
+}
+
+
 @media (max-width: 768px) {
     .course-video {
         width: 100%;

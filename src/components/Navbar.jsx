@@ -20,7 +20,9 @@ const Navbar = () => {
                     <Flex align={'center'} gap={'24px'}>
                         <Link {...css.link} href='#'>Bosh sahifa</Link>
                         <Link {...css.link} href='#'>Mahsulotlar</Link>
-                        <Link {...css.link} href='#'>Aloqa</Link>
+                        <Alink to={'/contact'}>
+                            <Text {...css.link}>Aloqa</Text>
+                        </Alink>
                         <Alink to={'/blog'}>
                             <Text {...css.link}>Blog</Text>
                         </Alink>
