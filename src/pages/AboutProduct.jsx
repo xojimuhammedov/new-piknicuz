@@ -48,7 +48,7 @@ const AboutProduct = () => {
         />;
     }
     return (
-        <Box p={'24px 0'}>
+        <Box position={'relative'} p={'24px 0'}>
             <Box className='container about-list'>
                 <Flex width={{ base: "100%", lg: '60%' }} gap={'24px'}>
                     <Swiper
@@ -115,9 +115,7 @@ const AboutProduct = () => {
                     <Button {...css.button}>Savatga qo'shish</Button>
                 </Box>
 
-                <Heading mt={{
-                    base: "36px", lg: '-150px'
-                }} textAlign={'center'} {...css.title}>Mahsulot Videosi va Xususiyatlari</Heading>
+                <Heading textAlign={'center'} {...css.title}>Mahsulot Videosi va Xususiyatlari</Heading>
                 {product?.video_src && (
                     <video className="course-video" ref={videoRef} autoPlay loop controls>
                         <source
@@ -175,7 +173,8 @@ const css = {
         lineHeight: "24px",
         fontWeight: "500",
         color: "#727272",
-        marginBottom: "43px"
+        marginBottom: "43px",
+        width: "100%"
     },
     button: {
         background: "#245D30",
@@ -190,7 +189,12 @@ const css = {
         fontSize: "16px",
         lineHeight: "24px",
         fontWeight: "500",
-        color: "#fff"
+        color: "#fff",
+        transition: "0.3s",
+
+        hover: {
+            background: "#245D30",
+        }
     },
     box: {
         background: "#E9F8EC",
@@ -201,9 +205,9 @@ const css = {
         cursor: "pointer"
     },
     right: {
-        position: "relative",
+        position: "absolute",
         left: "65%",
-        bottom: "550px",
+        bottom: "70%",
         display: {
             base: "none",
             lg: "block"

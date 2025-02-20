@@ -37,9 +37,16 @@ const css = {
         borderRadius: "20px"
     },
     image: {
-        width: "220px",
-        height: "220px",
-        objectFit: "cover"
+        width: {
+            base: "270px",
+            lg: "220px"
+        },
+        height: {
+            base: "270px",
+            lg: "220px"
+        },
+        objectFit: "cover",
+        borderRadius: "20px"
     },
     name: {
         fontSize: "20px",
