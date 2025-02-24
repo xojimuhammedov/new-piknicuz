@@ -30,7 +30,7 @@ const KorzinkaPage = () => {
         e.preventDefault();
         const ids = cart?.map(product => product?.id);
         const submitData = { ...formData, products: ids }
-        axios.post("https://picnic.propartnyor.uz/api/carts", submitData)
+        axios.post("https://api.piknicuz.com/api/carts", submitData)
             .then((response) => {
                 console.log(response)
                 if (response.status === 201) {

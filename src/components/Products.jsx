@@ -25,7 +25,7 @@ const Products = () => {
     }, [categoryId])
 
     useEffect(() => {
-        axios.get("https://picnic.propartnyor.uz/api/categories")
+        axios.get("https://api.piknicuz.com/api/categories")
             .then((res) => setCategory(res?.data?.data))
             .catch((err) => console.log(err))
     }, [])

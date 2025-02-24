@@ -32,7 +32,7 @@ const AboutProduct = () => {
     }, [product?.video_src]);
 
     useEffect(() => {
-        axios.get(`https://picnic.propartnyor.uz/api/products/${id}`)
+        axios.get(`https://api.piknicuz.com/api/products/${id}`)
             .then((res) => setProduct(res?.data?.data))
             .catch((err) => console.log(err))
             .finally(() => {
