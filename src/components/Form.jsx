@@ -84,7 +84,7 @@ const Form = () => {
                             onChange={(e) => changeNumber(e.target.value)} type='tell' {...css.input} placeholder='Telefon raqam' />
                         <Textarea value={textValue}
                             onChange={(e) => changeText(e.target.value)} placeholder='Xabar' {...css.textarea} />
-                        <Button onClick={sendMessage} {...css.button}>Yuborish</Button>
+                        <Button onClick={sendMessage} type='submit' {...css.button}>Yuborish</Button>
                     </Box>
                 </Flex>
             </Box>

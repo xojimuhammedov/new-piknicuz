@@ -7,6 +7,7 @@ import axios from 'axios';
 
 const Products = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [currentIndexTwo, setCurrentIndexTwo] = useState(0);
     const [categoryId, setCategoryId] = useState(null)
     const [product, setProduct] = useState([])
     const [category, setCategory] = useState([])
@@ -31,6 +32,8 @@ const Products = () => {
 
     const ITEMS_PER_PAGE = 5;
 
+    const ITEMS_PER_PAGE_Two = 2;
+
     const totalSlides = Math.ceil(category.length / ITEMS_PER_PAGE);
 
     const nextSlide = () => {
@@ -41,14 +44,34 @@ const Products = () => {
         setCurrentIndex((prev) => (prev > 0 ? prev - 1 : totalSlides - 1));
     };
 
+    const totalSlidesTwo = Math.ceil(category.length / ITEMS_PER_PAGE_Two);
+
+    const nextSlideTwo = () => {
+        setCurrentIndexTwo((prev) => (prev < totalSlidesTwo - 1 ? prev + 1 : 0));
+    };
+
+    const prevSlideTwo = () => {
+        setCurrentIndexTwo((prev) => (prev > 0 ? prev - 1 : totalSlidesTwo - 1));
+    };
+
     return (
         <>
             <Box id='product' position="relative" className='products' p={'60px 0'}>
                 <Box className='container'>
                     <Heading {...css.title}>Kategoriya va Mahsulotlar</Heading>
-                    <Flex mt={'84px'} wrap={'nowrap'} justify="space-between" maxW="100%">
+                    <Flex display={{ base: "none", lg: "flex" }} mt={'84px'} wrap={'nowrap'} justify="space-between" maxW="100%">
                         {category
                             ?.slice(currentIndex * ITEMS_PER_PAGE, (currentIndex + 1) * ITEMS_PER_PAGE)
+                            ?.map((category, index) => (
+                                <Heading onClick={() => setCategoryId(category?.id)} className={`product-title ${category?.id === categoryId ? "product-active" : ""}`} key={index} {...css.names}>
+                                    {category?.name}
+                                </Heading>
+                            ))}
+                    </Flex>
+
+                    <Flex display={{ base: "flex", lg: "none" }} mt={'84px'} wrap={'nowrap'} justify="space-between" maxW="100%">
+                        {category
+                            ?.slice(currentIndexTwo * ITEMS_PER_PAGE_Two, (currentIndexTwo + 1) * ITEMS_PER_PAGE_Two)
                             ?.map((category, index) => (
                                 <Heading onClick={() => setCategoryId(category?.id)} className={`product-title ${category?.id === categoryId ? "product-active" : ""}`} key={index} {...css.names}>
                                     {category?.name}
@@ -60,9 +83,17 @@ const Products = () => {
                     <Button
                         position="absolute"
                         top="50%"
-                        left="93%"
+                        left={
+                            {
+                                base: "70%",
+                                lg: "93%"
+                            }
+                        }
                         transform="translateY(-50%)"
-                        onClick={prevSlide}
+                        onClick={() => {
+                            prevSlide()
+                            prevSlideTwo()
+                        }}
                         px={4}
                         py={2}
                         {...css.next}
@@ -75,7 +106,10 @@ const Products = () => {
                         top="50%"
                         right="10px"
                         transform="translateY(-50%)"
-                        onClick={nextSlide}
+                        onClick={() => {
+                            nextSlide()
+                            nextSlideTwo()
+                        }}
                         px={4}
                         py={2}
                         {...css.next}
@@ -133,10 +167,16 @@ const css = {
         lineHeight: "normal",
     },
     names: {
-        fontSize: "20px",
+        fontSize: {
+            base: "12px",
+            lg: "20px"
+        },
         fontWeight: "400",
         cursor: "pointer",
-        padding: "10px 20px",
+        padding: {
+            base: "5px 15px",
+            lg: "10px 20px"
+        },
         borderRadius: "30px",
         border: "1px solid #fff",
 
