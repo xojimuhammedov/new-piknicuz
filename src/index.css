@@ -47,3 +47,7 @@ h6 {
   outline: none !important;
   border: none !important;
 }
+
+html{
+  scroll-behavior: smooth;
+}

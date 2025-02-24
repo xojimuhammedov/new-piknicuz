@@ -1,10 +1,11 @@
-import { Box, Heading, Image, Link, SimpleGrid, Text } from '@chakra-ui/react';
+import { Box, Flex, Heading, Image, Link, SimpleGrid, Text } from '@chakra-ui/react';
 import React from 'react';
 
 import LogoIcon from '../assets/logo.svg'
 import InstagramIcon from '../assets/InstagramIcon';
 
 import { Link as ALink } from 'react-router-dom'
+import TelegramIcon from '../assets/TelegramIcon';
 
 const Footer = () => {
     return (
@@ -13,9 +14,14 @@ const Footer = () => {
                 <SimpleGrid gap={'24px'} columns={{ base: 1, lg: 3 }}>
                     <Box>
                         <Image {...css.image} src={LogoIcon} alt='LogoIcon' />
-                        <Link target='_blank' href='https://www.instagram.com/Piknic_uz'>
-                            <InstagramIcon />
-                        </Link>
+                        <Flex gap={'16px'} align={'center'}>
+                            <Link target='_blank' href='https://www.instagram.com/Piknic_uz'>
+                                <InstagramIcon />
+                            </Link>
+                            <Link target='_blank' href='https://t.me/Piknicuzz'>
+                                <TelegramIcon />
+                            </Link>
+                        </Flex>
                     </Box>
                     <Box>
                         <Heading {...css.name}>Kompaniya</Heading>
@@ -30,8 +36,8 @@ const Footer = () => {
                     </Box>
                     <Box>
                         <Heading {...css.name}>Aloqa</Heading>
-                        <Link {...css.link} href='#'>+998 97 747 28 06</Link>
-                        <Link {...css.link} href='#'>Uzbekistan, Tashkent, Yakkasaray district Shota Rustaveli street 43</Link>
+                        {/* <Link {...css.link} href='#'>+998 97 747 28 06</Link> */}
+                        <Link target='_blank' {...css.link} href='https://maps.app.goo.gl/F4jnY5K9GA2jiwBa6'>Uzbekistan, Tashkent, Yakkasaray district Shota Rustaveli street 43</Link>
                     </Box>
                 </SimpleGrid>
             </Box>

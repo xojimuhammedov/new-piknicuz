@@ -18,8 +18,8 @@ const Navbar = () => {
                         <Image src={LogoIcon} alt='LogoIcon' />
                     </Alink>
                     <Flex align={'center'} gap={'24px'}>
-                        <Link {...css.link} href='#'>Bosh sahifa</Link>
-                        <Link {...css.link} href='#'>Mahsulotlar</Link>
+                        <Link {...css.link} href='/'>Bosh sahifa</Link>
+                        <Link {...css.link} href='#product'>Mahsulotlar</Link>
                         <Alink to={'/contact'}>
                             <Text {...css.link}>Aloqa</Text>
                         </Alink>

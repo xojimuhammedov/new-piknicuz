@@ -43,7 +43,7 @@ const Products = () => {
 
     return (
         <>
-            <Box position="relative" className='products' p={'60px 0'}>
+            <Box id='product' position="relative" className='products' p={'60px 0'}>
                 <Box className='container'>
                     <Heading {...css.title}>Kategoriya va Mahsulotlar</Heading>
                     <Flex mt={'84px'} wrap={'nowrap'} justify="space-between" maxW="100%">

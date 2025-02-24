@@ -12,28 +12,12 @@ const Form = () => {
                     <Box>
                         <Heading {...css.title}>Keling, biz bilan gaplashaylik</Heading>
                         <Text {...css.text}>Savollar, sharhlar yoki takliflar? Shaklni to'ldiring va biz tez orada bog'lanamiz.</Text>
-                        <Link href='#'>
+                        <Link target='_blank' href='https://maps.app.goo.gl/F4jnY5K9GA2jiwBa6'>
                             <Flex m={'12px 0'} gap={'12px'}>
                                 <Location />
                                 <Heading {...css.subname}>
                                     1055 Arthur ave Elk Groot, 67.
                                     New Palmas South Carolina.
-                                </Heading>
-                            </Flex>
-                        </Link>
-                        <Link href='#'>
-                            <Flex m={'12px 0'} align={'center'} gap={'12px'}>
-                                <Phone />
-                                <Heading {...css.subname}>
-                                    +1 234 678 9108 99
-                                </Heading>
-                            </Flex>
-                        </Link>
-                        <Link href='#'>
-                            <Flex m={'12px 0'} align={'center'} gap={'12px'}>
-                                <Mail />
-                                <Heading {...css.subname}>
-                                    Contact@moralizer.com
                                 </Heading>
                             </Flex>
                         </Link>
