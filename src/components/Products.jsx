@@ -12,7 +12,7 @@ const Products = () => {
     const [product, setProduct] = useState([])
     const [category, setCategory] = useState([])
     useEffect(() => {
-        axios.get("https://picnic.propartnyor.uz/api/products")
+        axios.get("https://api.piknicuz.com/api/products")
             .then((res) => {
                 if (categoryId) {
                     setProduct(res?.data?.data?.filter((item) => item.category_id === categoryId))
