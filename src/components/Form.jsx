@@ -1,10 +1,64 @@
-import { Box, Button, Flex, Heading, Input, Link, SimpleGrid, Text, Textarea } from '@chakra-ui/react';
-import React from 'react';
+import { Box, Button, Flex, Heading, Input, Link, Text, Textarea } from '@chakra-ui/react';
+import React, { useState } from 'react';
 import Location from '../assets/Location';
-import Phone from '../assets/Phone';
-import Mail from '../assets/Mail';
+import { toast } from 'react-toastify';
 
 const Form = () => {
+    const [nameValue, setNameValue] = useState("");
+    const [numberValue, setNumberValue] = useState("");
+    const [textValue, setTextValue] = useState("");
+    const [email, setEmail] = useState("");
+
+    function changeNumber(item) {
+        setNumberValue(item);
+    }
+
+    function changeName(item) {
+        setNameValue(item);
+    }
+    function changeText(item) {
+        setTextValue(item);
+    }
+    function changeEmail(item) {
+        setEmail(item);
+    }
+    const handleClear = () => {
+        setNameValue("");
+        setNumberValue("");
+        setTextValue("");
+        setEmail("");
+    };
+    let bot = {
+        TOKEN: "8015684576:AAEgmJv1Fp4XDcbHnoh2fYCvNdDEeL2rwB4",
+        chatID: "-1002337598384",
+        message: `
+              Assalomu alaykum sizga yangi habar bor!
+              Ism Familya 👤: ${nameValue}; 
+              Telefon raqami ☎: ${numberValue};
+              Xabari: ${textValue};
+              `,
+    };
+
+    const encodedMessage = encodeURIComponent(bot.message);
+
+    function sendMessage(e) {
+        e.preventDefault();
+
+        fetch(
+            `https://api.telegram.org/bot${bot.TOKEN}/sendMessage?chat_id=${bot.chatID}&text=${encodedMessage} `,
+            {
+                method: "GET",
+            }
+        ).then(
+            () => {
+                handleClear();
+                toast.success("Sizning habaringiz yuborildi!");
+            },
+            (error) => {
+                console.log(error);
+            }
+        );
+    }
     return (
         <Box p={'48px 0'}>
             <Box className='container'>
@@ -16,21 +70,21 @@ const Form = () => {
                             <Flex m={'12px 0'} gap={'12px'}>
                                 <Location />
                                 <Heading {...css.subname}>
-                                    1055 Arthur ave Elk Groot, 67.
-                                    New Palmas South Carolina.
+                                    Toshkent shaxar Shayxontoxur tumani Qoʻrgʻoncha koʻchasi 48 uy
                                 </Heading>
                             </Flex>
                         </Link>
                     </Box>
                     <Box {...css.item}>
-                        <SimpleGrid columns={{ base: 1, lg: 2 }} gap={{ base: "0", lg: '20px' }}>
-                            <Input {...css.input} placeholder='Ism' />
-                            <Input {...css.input} placeholder='Familya' />
-                        </SimpleGrid>
-                        <Input type='email' {...css.input} placeholder='Pochta' />
-                        <Input type='tell' {...css.input} placeholder='Telefon raqam' />
-                        <Textarea placeholder='Xabar' {...css.textarea} />
-                        <Button {...css.button}>Yuborish</Button>
+                        <Input value={nameValue}
+                            onChange={(e) => changeName(e.target.value)} {...css.input} placeholder='Ism va familya' />
+                        <Input value={email}
+                            onChange={(e) => changeEmail(e.target.value)} type='email' {...css.input} placeholder='Pochta' />
+                        <Input value={numberValue}
+                            onChange={(e) => changeNumber(e.target.value)} type='tell' {...css.input} placeholder='Telefon raqam' />
+                        <Textarea value={textValue}
+                            onChange={(e) => changeText(e.target.value)} placeholder='Xabar' {...css.textarea} />
+                        <Button onClick={sendMessage} {...css.button}>Yuborish</Button>
                     </Box>
                 </Flex>
             </Box>

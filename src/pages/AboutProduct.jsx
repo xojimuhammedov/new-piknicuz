@@ -12,6 +12,7 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
+import { useCart } from '../context/CardContext';
 
 const AboutProduct = () => {
     const { id } = useParams()
@@ -19,6 +20,7 @@ const AboutProduct = () => {
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     const [loading, setLoading] = useState(true);
     const videoRef = useRef();
+     const { addToCart } = useCart();
 
     useEffect(() => {
         if (videoRef.current && product?.video_src) {
@@ -101,7 +103,7 @@ const AboutProduct = () => {
                             __html: product?.description
                         }}
                     />
-                    <Button {...css.button}>Savatga qo'shish</Button>
+                    <Button onClick={() => addToCart(product)} {...css.button}>Savatga qo'shish</Button>
                 </Box>
 
                 <Box {...css.rights}>
@@ -112,7 +114,7 @@ const AboutProduct = () => {
                             __html: product?.description
                         }}
                     />
-                    <Button {...css.button}>Savatga qo'shish</Button>
+                    <Button onClick={() => addToCart(item)} {...css.button}>Savatga qo'shish</Button>
                 </Box>
 
                 <Heading textAlign={'center'} {...css.title}>Mahsulot Videosi va Xususiyatlari</Heading>
@@ -140,7 +142,7 @@ const css = {
         },
         height: {
             base: "330px",
-            lg: "530px"
+            lg: "570px"
         },
         display: "flex",
         alignItems: "center",
@@ -161,7 +163,8 @@ const css = {
         },
         lineHeight: "normal",
         fontWeight: "700",
-        marginBottom: "24px"
+        marginBottom: "24px",
+        marginTop:"60px"
     },
     price: {
         fontSize: "32px",
@@ -192,7 +195,7 @@ const css = {
         color: "#fff",
         transition: "0.3s",
 
-        hover: {
+        _hover: {
             background: "#245D30",
         }
     },

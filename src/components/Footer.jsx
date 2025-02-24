@@ -1,6 +1,5 @@
 import { Box, Flex, Heading, Image, Link, SimpleGrid, Text } from '@chakra-ui/react';
 import React from 'react';
-
 import LogoIcon from '../assets/logo.svg'
 import InstagramIcon from '../assets/InstagramIcon';
 
@@ -36,8 +35,7 @@ const Footer = () => {
                     </Box>
                     <Box>
                         <Heading {...css.name}>Aloqa</Heading>
-                        {/* <Link {...css.link} href='#'>+998 97 747 28 06</Link> */}
-                        <Link target='_blank' {...css.link} href='https://maps.app.goo.gl/F4jnY5K9GA2jiwBa6'>Uzbekistan, Tashkent, Yakkasaray district Shota Rustaveli street 43</Link>
+                        <Link target='_blank' {...css.link} href='https://maps.app.goo.gl/F4jnY5K9GA2jiwBa6'>Toshkent shaxar Shayxontoxur tumani Qoʻrgʻoncha koʻchasi 48 uy</Link>
                     </Box>
                 </SimpleGrid>
             </Box>
