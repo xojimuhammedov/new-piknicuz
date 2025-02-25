@@ -32,10 +32,10 @@ const Question = () => {
                             <AccordionIcon />
                         </AccordionButton>
                         <AccordionPanel {...css.text} pb={4}>
-                            Siz tanlagan mahsulotni savatchaga qo‘shib, to‘lov jarayonini davom ettirish orqali buyurtma qilishingiz mumkin. Buyurtma jarayoni oddiy va qulay.
+                            To‘lov naqd yoki plastik karta orqali amalga oshiriladi. Do‘konimizdan xarid qilish qulay va oson!
                         </AccordionPanel>
                     </AccordionItem>
-                    <AccordionItem {...css.items}>
+                    {/* <AccordionItem {...css.items}>
                         <AccordionButton p={"20px"}>
                             <Box as="h2" {...css.name} flex="1" textAlign="left">
                                 Mahsulotlarni qaytarish mumkinmi?
@@ -45,7 +45,7 @@ const Question = () => {
                         <AccordionPanel {...css.text} pb={4}>
                             Siz tanlagan mahsulotni savatchaga qo‘shib, to‘lov jarayonini davom ettirish orqali buyurtma qilishingiz mumkin. Buyurtma jarayoni oddiy va qulay.
                         </AccordionPanel>
-                    </AccordionItem>
+                    </AccordionItem> */}
                     <AccordionItem {...css.items}>
                         <AccordionButton p={"20px"}>
                             <Box as="h2" {...css.name} flex="1" textAlign="left">
@@ -54,7 +54,7 @@ const Question = () => {
                             <AccordionIcon />
                         </AccordionButton>
                         <AccordionPanel {...css.text} pb={4}>
-                            Siz tanlagan mahsulotni savatchaga qo‘shib, to‘lov jarayonini davom ettirish orqali buyurtma qilishingiz mumkin. Buyurtma jarayoni oddiy va qulay.
+                            Ha, barcha mahsulotlarimiz sifat kafolati bilan ta’minlangan.
                         </AccordionPanel>
                     </AccordionItem>
                     <AccordionItem {...css.items}>
@@ -65,7 +65,7 @@ const Question = () => {
                             <AccordionIcon />
                         </AccordionButton>
                         <AccordionPanel {...css.text} pb={4}>
-                            Siz tanlagan mahsulotni savatchaga qo‘shib, to‘lov jarayonini davom ettirish orqali buyurtma qilishingiz mumkin. Buyurtma jarayoni oddiy va qulay.
+                            Albatta! Sizga mos sayohat mahsulotlarini tanlashda yordam beramiz. Mahsulotlar bo'limimiz orqali sayohat uchun kerak bo'ladigan mahsulotlarni ko'rishingiz mumkin!
                         </AccordionPanel>
                     </AccordionItem>
                     <AccordionItem {...css.items}>
@@ -76,7 +76,7 @@ const Question = () => {
                             <AccordionIcon />
                         </AccordionButton>
                         <AccordionPanel {...css.text} pb={4}>
-                            Siz tanlagan mahsulotni savatchaga qo‘shib, to‘lov jarayonini davom ettirish orqali buyurtma qilishingiz mumkin. Buyurtma jarayoni oddiy va qulay.
+                             Albatta! Bizning mahsulotlarimizni kelib ko'rishingiz mumkin. Aloqa bo'limi orqali manzilimizni ko'rishingiz mumkin!
                         </AccordionPanel>
                     </AccordionItem>
                 </Accordion>

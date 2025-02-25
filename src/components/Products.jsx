@@ -69,7 +69,7 @@ const Products = () => {
                             ))}
                     </Flex>
 
-                    <Flex display={{ base: "flex", lg: "none" }} mt={'84px'} wrap={'nowrap'} justify="space-between" maxW="100%">
+                    <Flex display={{ base: "flex", lg: "none" }} mt={'84px'} gap={'12px'} wrap={'nowrap'} justify="space-between" maxW="100%">
                         {category
                             ?.slice(currentIndexTwo * ITEMS_PER_PAGE_Two, (currentIndexTwo + 1) * ITEMS_PER_PAGE_Two)
                             ?.map((category, index) => (
@@ -172,6 +172,7 @@ const css = {
             lg: "20px"
         },
         fontWeight: "400",
+        lineHeight: "36px",
         cursor: "pointer",
         padding: {
             base: "5px 15px",
@@ -179,6 +180,7 @@ const css = {
         },
         borderRadius: "30px",
         border: "1px solid #fff",
+        margin:"0 5px",
 
         _hover: {
             border: "1px solid #000"
