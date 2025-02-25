@@ -93,6 +93,22 @@
     border: 1px solid #000 !important;
 }
 
+.modal-open-button {
+    height: 30px;
+    border: 0;
+    outline: 0;
+    padding: 5px 10px;
+    position: relative;
+    width: 35px;
+    z-index: 20;
+    background-color: #245D30;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 
 @media (max-width: 768px) {
     .course-video {

@@ -6,6 +6,7 @@ import Korzinka from '../assets/Korzinka';
 
 import { Link as Alink } from 'react-router-dom'
 import { useCart } from '../context/CardContext';
+import NavModal from './NavModal';
 
 const Navbar = () => {
     const { cart, removeFromCart } = useCart();
@@ -32,6 +33,9 @@ const Navbar = () => {
                         <Alink to={'/korzinka'}>
                             <Korzinka />
                         </Alink>
+                        <Box display={{ base: 'block', lg: 'none' }}>
+                            <NavModal />
+                        </Box>
                     </Flex>
                 </Flex>
             </Box>
