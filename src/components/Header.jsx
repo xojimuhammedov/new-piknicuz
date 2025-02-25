@@ -16,15 +16,15 @@ const Header = () => {
                         <Link {...css.link}>Xarid qiling</Link>
                         <Flex mt={'48px'} gap={'24px'}>
                             <Flex flexDirection={'column'}>
-                                <Heading {...css.name}>200+</Heading>
-                                <Text {...css.subname}>Xalqaro brendlar</Text>
+                                <Heading {...css.name}>2+</Heading>
+                                <Text {...css.subname}>Yillik tajriba</Text>
                             </Flex>
                             <Flex flexDirection={'column'}>
-                                <Heading {...css.name}>2000+</Heading>
+                                <Heading {...css.name}>1500+</Heading>
                                 <Text {...css.subname}>Yuqori Sifatli Mahsulotlar</Text>
                             </Flex>
                             <Flex flexDirection={'column'}>
-                                <Heading {...css.name}>30000+</Heading>
+                                <Heading {...css.name}>500+</Heading>
                                 <Text {...css.subname}>Baxtli mijozlar</Text>
                             </Flex>
                         </Flex>
