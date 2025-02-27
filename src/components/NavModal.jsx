@@ -7,12 +7,10 @@ import {
     Text
 } from '@chakra-ui/react';
 
-
 import { Link as Alink } from 'react-router-dom'
 
 function NavModal() {
     const { isOpen, onOpen, onClose } = useDisclosure();
-
     return (
         <>
             <button onClick={onOpen} className="modal-open-button">

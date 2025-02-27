@@ -13,7 +13,7 @@ const Header = () => {
                             Zo'r jihozlar bilan sarguzashtlarni kashf eting
                         </Heading>
                         <Text {...css.text}>Sarguzasht ishqibozlari uchun moʻljallangan ochiq havoda kerakli jihozlarimizni kashf eting. Yuqori sifatli chodirlardan qulay lager anjomlarigacha, hammasi sizning tajribangizni yuksaltirish uchun.</Text>
-                        <Link {...css.link}>Xarid qiling</Link>
+                        <Link href='#product' {...css.link}>Xarid qiling</Link>
                         <Flex mt={'48px'} gap={'24px'}>
                             <Flex flexDirection={'column'}>
                                 <Heading {...css.name}>2+</Heading>
