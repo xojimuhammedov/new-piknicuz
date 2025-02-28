@@ -69,6 +69,7 @@ const Products = () => {
                             ))}
                     </Flex>
 
+
                     <Flex display={{ base: "flex", lg: "none" }} mt={'84px'} gap={'12px'} wrap={'nowrap'} justify="space-between" maxW="100%">
                         {category
                             ?.slice(currentIndexTwo * ITEMS_PER_PAGE_Two, (currentIndexTwo + 1) * ITEMS_PER_PAGE_Two)
@@ -79,43 +80,48 @@ const Products = () => {
                             ))}
                     </Flex>
 
+                    {
+                        category.length > 0 ? (
+                            <>
+                                <Button
+                                    position="absolute"
+                                    top="50%"
+                                    left={
+                                        {
+                                            base: "70%",
+                                            lg: "93%"
+                                        }
+                                    }
+                                    transform="translateY(-50%)"
+                                    onClick={() => {
+                                        prevSlide()
+                                        prevSlideTwo()
+                                    }}
+                                    px={4}
+                                    py={2}
+                                    {...css.next}
+                                >
+                                    ❮
+                                </Button>
 
-                    <Button
-                        position="absolute"
-                        top="50%"
-                        left={
-                            {
-                                base: "70%",
-                                lg: "93%"
-                            }
-                        }
-                        transform="translateY(-50%)"
-                        onClick={() => {
-                            prevSlide()
-                            prevSlideTwo()
-                        }}
-                        px={4}
-                        py={2}
-                        {...css.next}
-                    >
-                        ❮
-                    </Button>
-
-                    <Button
-                        position="absolute"
-                        top="50%"
-                        right="10px"
-                        transform="translateY(-50%)"
-                        onClick={() => {
-                            nextSlide()
-                            nextSlideTwo()
-                        }}
-                        px={4}
-                        py={2}
-                        {...css.next}
-                    >
-                        ❯
-                    </Button>
+                                <Button
+                                    position="absolute"
+                                    top="50%"
+                                    right="10px"
+                                    transform="translateY(-50%)"
+                                    onClick={() => {
+                                        nextSlide()
+                                        nextSlideTwo()
+                                    }}
+                                    px={4}
+                                    py={2}
+                                    {...css.next}
+                                >
+                                    ❯
+                                </Button>
+                            </>
+                        ) : null
+                    }
                 </Box>
             </Box>
             <Box className='container'>
@@ -180,7 +186,7 @@ const css = {
         },
         borderRadius: "30px",
         border: "1px solid #fff",
-        margin:"0 5px",
+        margin: "0 5px",
 
         _hover: {
             border: "1px solid #000"
