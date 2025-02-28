@@ -1,9 +1,7 @@
 import { Box, Button, Flex, Heading, Link, SimpleGrid, Text } from '@chakra-ui/react';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Card from './Card';
 import axios from 'axios';
-
-
 
 const Products = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
