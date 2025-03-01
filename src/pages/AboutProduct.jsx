@@ -66,7 +66,7 @@ const AboutProduct = () => {
                             product?.product_images?.map((item, index) => (
                                 <SwiperSlide key={index}>
                                     <Box {...css.box}>
-                                        <Image src={`https://picnic.propartnyor.uz/api/uploads/images/${item?.images_src}`} />
+                                        <Image src={`https://api.piknicuz.com/api/uploads/images/${item?.images_src}`} />
                                     </Box>
                                 </SwiperSlide>
                             ))
@@ -88,7 +88,7 @@ const AboutProduct = () => {
                             product?.product_images?.map((item, index) => (
                                 <SwiperSlide key={index}>
                                     <Box {...css.item}>
-                                        <Image {...css.image} src={`https://picnic.propartnyor.uz/api/uploads/images/${item?.images_src}`} />
+                                        <Image {...css.image} src={`https://api.piknicuz.com/api/uploads/images/${item?.images_src}`} />
                                     </Box>
                                 </SwiperSlide>
                             ))
@@ -121,7 +121,7 @@ const AboutProduct = () => {
                 {product?.video_src && (
                     <video className="course-video" ref={videoRef} autoPlay loop controls>
                         <source
-                            src={`https://picnic.propartnyor.uz/api/uploads/images/${product?.video_src}`}
+                            src={`https://api.piknicuz.com/api/uploads/images/${product?.video_src}`}
                             type="video/mp4"
                         />
                     </video>

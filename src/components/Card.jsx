@@ -10,7 +10,7 @@ const Card = ({ item }) => {
         <Box key={item.id}>
             <Link to={`/product/${item?.id}`}>
                 <Box {...css.item}>
-                    <Image {...css.image} src={`https://api.piknicuz.com/uploads/images/${item?.image_src}`} />
+                    <Image {...css.image} src={`https://api.piknicuz.com/api/uploads/images/${item?.image_src}`} />
                 </Box>
             </Link>
             <Heading {...css.name}>{item.title}</Heading>
