@@ -55,7 +55,7 @@ const KorzinkaPage = () => {
                                     cart?.map((item, index) => (
                                         <Flex align={'center'} key={index} gap={'24px'} w={'100%'}>
                                             <Box {...css.card}>
-                                                <Image {...css.image} src={`https://picnic.propartnyor.uz/api/uploads/images/${item?.image_src}`} />
+                                                <Image {...css.image} src={`https://api.piknicuz.com/api/uploads/images/${item?.image_src}`} />
                                             </Box>
                                             <Box w={'100%'}>
                                                 <Flex align={'center'} justifyContent={'space-between'}>

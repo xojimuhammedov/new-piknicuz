@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
+import { toast } from "react-toastify";
 
 const CartContext = createContext();
 
@@ -24,6 +25,7 @@ export const CartProvider = ({ children }) => {
                 return [...prevCart, { ...item, count: 1 }];
             }
         });
+        toast.success("Mahsulot korzinkaga qo'shildi!")
     };
 
     const updateQuantity = (id, amount) => {
@@ -38,6 +40,7 @@ export const CartProvider = ({ children }) => {
 
     const removeFromCart = (id) => {
         setCart((prevCart) => prevCart.filter((item) => item.id !== id));
+        toast.error("Mahsulot korzinkadan o'chirildi!")
     };
 
     return (

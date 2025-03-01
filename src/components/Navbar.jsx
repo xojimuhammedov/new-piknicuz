@@ -11,6 +11,8 @@ import NavModal from './NavModal';
 const Navbar = () => {
     const { cart, removeFromCart } = useCart();
 
+    console.log(cart)
+
     return (
         <Box p={'15px 0'}>
             <Box className='container'>
@@ -29,8 +31,9 @@ const Navbar = () => {
                         </Alink>
                     </Flex>
                     <Flex align={'center'} gap={'24px'}>
-                        <Input {...css.input} placeholder={"Search for products..."} />
-                        <Alink to={'/korzinka'}>
+                        {/* <Input {...css.input} placeholder={"Search for products..."} /> */}
+                        <Alink className='navbar-link' to={'/korzinka'}>
+                        <span className='navbar-span'>{cart?.length}</span>
                             <Korzinka />
                         </Alink>
                         <Box display={{ base: 'block', lg: 'none' }}>
