@@ -148,18 +148,24 @@ const css = {
         lineHeight: "normal",
     },
     link: {
-        fontSize: "16px",
+        fontSize: {
+            base: "14px",
+            lg: "16px"
+        },
         fontWeight: "500",
         color: "#245D30",
         lineHeight: "normal",
         border: "1px solid #245D30",
         borderRadius: "62px",
-        padding: "16px 54px",
+        padding: {
+            base: "15px 48px",
+            lg: "16px 54px"
+        },
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         width: {
-            base: "100%",
+            base: "65%",
             lg: "265px"
         },
         margin: "auto"

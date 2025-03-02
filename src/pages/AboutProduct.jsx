@@ -13,6 +13,7 @@ import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 import { useCart } from '../context/CardContext';
+import Categories from '../components/Categories';
 
 const AboutProduct = () => {
     const { id } = useParams()
@@ -52,6 +53,7 @@ const AboutProduct = () => {
     return (
         <Box position={'relative'} p={'24px 0'}>
             <Box className='container about-list'>
+                <Categories />
                 <Flex width={{ base: "100%", lg: '60%' }} gap={'24px'}>
                     <Swiper
                         onSwiper={setThumbsSwiper}
@@ -210,7 +212,7 @@ const css = {
     right: {
         position: "absolute",
         left: "65%",
-        bottom: "70%",
+        bottom: "65%",
         display: {
             base: "none",
             lg: "block"
