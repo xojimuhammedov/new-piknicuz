@@ -64,7 +64,7 @@ const KorzinkaPage = () => {
                                                         <DeleteIcon />
                                                     </Button>
                                                 </Flex>
-                                                <Flex align={'center'} mt={'60px'} justifyContent={'space-between'}>
+                                                <Flex align={'center'} mt={{ base: "36px", lg: '60px' }} justifyContent={'space-between'}>
                                                     <Heading fontSize={'24px'} {...css.name}>{item.price} so'm</Heading>
                                                     <Flex align={'center'} {...css.bottom}>
                                                         <Button onClick={() => updateQuantity(item.id, -1)} {...css.click}>
@@ -125,7 +125,10 @@ export default KorzinkaPage;
 
 const css = {
     title: {
-        fontSize: "36px",
+        fontSize: {
+            base: "24px",
+            lg: "36px"
+        },
         lineHeight: "normal",
         fontWeight: "700"
     },
@@ -180,7 +183,11 @@ const css = {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        borderRadius: "12px"
+        borderRadius: "12px",
+        display: {
+            base: "none",
+            lg: "block"
+        }
     },
     submit: {
         background: "#245D30",
