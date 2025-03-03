@@ -45,7 +45,7 @@ const Form = () => {
         e.preventDefault();
 
         fetch(
-            `https://api.telegram.org/bot${bot.TOKEN}/sendMessage?chat_id=${bot.chatID}&text=${encodedMessage} `,
+            `https://api.telegram.org/bot${bot.TOKEN}/sendMessage?chat_id=${bot.chatID}&text=${encodedMessage}`,
             {
                 method: "GET",
             }
@@ -64,7 +64,7 @@ const Form = () => {
             <Box className='container'>
                 <Flex flexDirection={{ base: "column", lg: "row" }} justifyContent={'space-between'}>
                     <Box>
-                        <Heading {...css.title}>Keling, biz bilan gaplashaylik</Heading>
+                        <Heading {...css.title}>Keling, siz bilan gaplashaylik</Heading>
                         <Text {...css.text}>Savollar, sharhlar yoki takliflar? Shaklni to'ldiring va biz tez orada bog'lanamiz.</Text>
                         <Link target='_blank' href='https://maps.app.goo.gl/F4jnY5K9GA2jiwBa6'>
                             <Flex m={'12px 0'} gap={'12px'}>

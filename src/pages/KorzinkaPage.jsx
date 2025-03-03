@@ -15,7 +15,6 @@ const KorzinkaPage = () => {
         phone: "",
         address: "",
         text: "",
-        is_active: true
     });
 
     const handleChange = (e) => {
@@ -26,16 +25,32 @@ const KorzinkaPage = () => {
         }));
     };
 
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        const ids = cart?.map(product => product?.id);
+        const ids = cart?.map(product => product?.title);
         const submitData = { ...formData, products: ids }
-        axios.post("https://api.piknicuz.com/api/carts", submitData)
+
+        let bot = {
+            TOKEN: "8015684576:AAEgmJv1Fp4XDcbHnoh2fYCvNdDEeL2rwB4",
+            chatID: "-1002337598384",
+            message: `
+                  Assalomu alaykum sizga yangi habar bor!
+                  Ism Familya 👤: ${submitData.full_name}; 
+                  Telefon raqami ☎: ${submitData.phone};
+                  Manzili: ${submitData.address};
+                  Mahsulotlar: ${submitData.products.map(item => `- ${item}`).join("\n")}
+                  `,
+        };
+    
+        const encodedMessage = encodeURIComponent(bot.message);
+        axios.get(`https://api.telegram.org/bot${bot.TOKEN}/sendMessage?chat_id=${bot.chatID}&text=${encodedMessage}`)
             .then((response) => {
                 console.log(response)
-                if (response.status === 201) {
+                if (response.status === 200) {
                     toast.success("Muvaffaqiyatli yuborildi!")
                     onClose()
+                    removeFromCart()
                 }
             })
             .catch((err) => {
@@ -186,7 +201,7 @@ const css = {
         borderRadius: "12px",
         display: {
             base: "none",
-            lg: "block"
+            lg: "flex"
         }
     },
     submit: {
