@@ -2,6 +2,7 @@ import { Box, Button, Flex, Heading, Input, Link, Text, Textarea } from '@chakra
 import React, { useState } from 'react';
 import Location from '../assets/Location';
 import { toast } from 'react-toastify';
+import Phone from '../assets/Phone';
 
 const Form = () => {
     const [nameValue, setNameValue] = useState("");
@@ -71,6 +72,14 @@ const Form = () => {
                                 <Location />
                                 <Heading {...css.subname}>
                                     Toshkent shaxar Shayxontoxur tumani Qoʻrgʻoncha koʻchasi 48 uy
+                                </Heading>
+                            </Flex>
+                        </Link>
+                        <Link target='_blank' href='tel:+998990691991'>
+                            <Flex m={'12px 0'} gap={'12px'}>
+                                <Phone />
+                                <Heading {...css.subname}>
+                                    +998 99 069 19 91
                                 </Heading>
                             </Flex>
                         </Link>

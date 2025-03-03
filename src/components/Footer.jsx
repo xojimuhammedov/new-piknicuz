@@ -36,6 +36,9 @@ const Footer = () => {
                     <Box>
                         <Heading {...css.name}>Aloqa</Heading>
                         <Link target='_blank' {...css.link} href='https://maps.app.goo.gl/F4jnY5K9GA2jiwBa6'>Toshkent shaxar Shayxontoxur tumani Qoʻrgʻoncha koʻchasi 48 uy</Link>
+                        <Link target='_blank' {...css.link} href='tel:+998990691991'>
+                            +998 99 069 19 91
+                        </Link>
                     </Box>
                 </SimpleGrid>
             </Box>
