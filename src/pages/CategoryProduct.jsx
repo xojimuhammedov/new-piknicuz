@@ -19,7 +19,6 @@ const CategoryProduct = () => {
             })
             .catch((err) => console.log(err))
     }, [categoryId])
-    console.log(product);
 
     return (
         <Box p={'48px 0'}>
