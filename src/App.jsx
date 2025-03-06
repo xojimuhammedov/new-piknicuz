@@ -9,6 +9,7 @@ import BlogPage from './pages/BlogPage'
 import ContactPage from './pages/ContactPage'
 import AboutProduct from './pages/AboutProduct'
 import KorzinkaPage from './pages/KorzinkaPage'
+import CategoryProduct from './pages/CategoryProduct'
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
         <Route path='/contact' element={<ContactPage />} />
         <Route path='/product/:id' element={<AboutProduct />} />
         <Route path='/korzinka' element={<KorzinkaPage />} />
+        <Route path='/category/:id' element={<CategoryProduct />} />
       </Routes>
       <Footer />
     </>

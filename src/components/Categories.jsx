@@ -38,12 +38,12 @@ const Categories = () => {
         setCurrentIndexTwo((prev) => (prev > 0 ? prev - 1 : totalSlidesTwo - 1));
     };
     return (
-        <Box  position={'relative'}>
+        <Box position={'relative'}>
             <Flex mb={'36px'} display={{ base: "none", lg: "flex" }} wrap={'nowrap'} justify="space-between" maxW="100%">
                 {category
                     ?.slice(currentIndex * ITEMS_PER_PAGE, (currentIndex + 1) * ITEMS_PER_PAGE)
                     ?.map((category, index) => (
-                        <Link to={'/'}>
+                        <Link to={`/category/${category?.id}`}>
                             <Heading key={index} {...css.names}>
                                 {category?.name}
                             </Heading>
@@ -56,7 +56,7 @@ const Categories = () => {
                 {category
                     ?.slice(currentIndexTwo * ITEMS_PER_PAGE_Two, (currentIndexTwo + 1) * ITEMS_PER_PAGE_Two)
                     ?.map((category, index) => (
-                        <Link to={'/'}>
+                        <Link to={`/category/${category?.id}`}>
                             <Heading key={index} {...css.names}>
                                 {category?.name}
                             </Heading>
