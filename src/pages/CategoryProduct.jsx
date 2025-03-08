@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Card from '../components/Card';
 import axios from 'axios';
+import Categories from '../components/Categories';
 
 const CategoryProduct = () => {
     const { categoryId } = useParams()
@@ -23,6 +24,7 @@ const CategoryProduct = () => {
     return (
         <Box p={'48px 0'}>
             <Box className='container'>
+                <Categories />
                 <Heading {...css.title}>{product[0]?.category?.name}</Heading>
                 <SimpleGrid mt={'36px'} gap={{ base: "24px", lg: '70px 24px' }} columns={{ base: 1, md: 2, xl: 4 }}>
                     {
