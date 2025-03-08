@@ -71,13 +71,35 @@ const Question = () => {
                     <AccordionItem {...css.items}>
                         <AccordionButton p={"20px"}>
                             <Box as="h2" {...css.name} flex="1" textAlign="left">
+                                Yetkazib berish xizmati bormi?
+                            </Box>
+                            <AccordionIcon />
+                        </AccordionButton>
+                        <AccordionPanel {...css.text} pb={4}>
+                            Afsuski bizda yetkazib berish xizmati mavjud emas. Mijozlarga qulaylik yaratish maqsadida viloyatlarga BTS yoki EMU pochtalari orqali joʻnata olamiz. Toshkent shaxriga yandex orqali yuborishimiz mumkin.
+                            Yetkazib berish xizmati sotib oluvchi tomonidan toʻlanadi.
+                        </AccordionPanel>
+                    </AccordionItem>
+                    <AccordionItem {...css.items}>
+                        <AccordionButton p={"20px"}>
+                            <Box as="h2" {...css.name} flex="1" textAlign="left">
                                 Mahsulotlarni ko‘rish uchun oflayn do‘koningiz bormi?
                             </Box>
                             <AccordionIcon />
                         </AccordionButton>
                         <AccordionPanel {...css.text} pb={4}>
-                             Albatta! Bizning mahsulotlarimizni kelib ko'rishingiz mumkin. Aloqa bo'limi orqali manzilimizni ko'rishingiz mumkin!
+                            Albatta! Bizning mahsulotlarimizni kelib ko'rishingiz mumkin. Aloqa bo'limi orqali manzilimizni ko'rishingiz mumkin!
                         </AccordionPanel>
+                    </AccordionItem>
+                    <AccordionItem {...css.items}>
+                        <AccordionButton p={"20px"}>
+                            <Box as="h2" {...css.name} flex="1" textAlign="left">
+                                Maxsulotga toʻlovni qachon qilaman.
+                            </Box>
+                            <AccordionIcon />
+                        </AccordionButton>
+                        <AccordionPanel {...css.text} pb={4}>
+                            Bizda xamma maxsulotlarga oldindan toʻlov qilish kerak.                        </AccordionPanel>
                     </AccordionItem>
                 </Accordion>
             </Box>
