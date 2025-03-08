@@ -83,6 +83,17 @@ const Form = () => {
                                 </Heading>
                             </Flex>
                         </Link>
+                        <Heading mt={'24px'} {...css.subname}>Ish vaqtlari</Heading>
+                        <Box {...css.date} mt={'12px'}>
+                            Dushanba: 10:30-20:00 <br />
+                            Seshanba: 10:30-20:00 <br />
+                            Chorshanba: 10:30-20:00 <br />
+                            Payshanba: 10:30-20:00 <br />
+                            Juma: dam olish kuni <br />
+                            Shanba: 10:30-20:00 <br />
+                            Yakshanba: 10:30-20:00<br />
+
+                        </Box>
                     </Box>
                     <Box {...css.item}>
                         <Input value={nameValue}
@@ -205,5 +216,11 @@ const css = {
         _hover: {
             background: '#245D30',
         }
+    },
+    date: {
+        fontSize: "14px",
+        lineHeight: "22px",
+        fontWeight:"400",
+        fontStyle:"italic"
     }
 }
