@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Heading, Link, SimpleGrid, Text } from '@chakra-ui/react';
+import { Box, Button, Flex, Heading, Image, Link, SimpleGrid, Text } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import Card from './Card';
 import axios from 'axios';
@@ -28,7 +28,7 @@ const Products = () => {
             .catch((err) => console.log(err))
     }, [])
 
-    const ITEMS_PER_PAGE = 5;
+    const ITEMS_PER_PAGE = 4;
 
     const ITEMS_PER_PAGE_Two = 2;
 
@@ -61,9 +61,13 @@ const Products = () => {
                         {category
                             ?.slice(currentIndex * ITEMS_PER_PAGE, (currentIndex + 1) * ITEMS_PER_PAGE)
                             ?.map((category, index) => (
-                                <Heading onClick={() => setCategoryId(category?.id)} className={`product-title ${category?.id === categoryId ? "product-active" : ""}`} key={index} {...css.names}>
-                                    {category?.name}
-                                </Heading>
+                                <Flex {...css.items} className={`product-title ${category?.id === categoryId ? "product-active" : ""}`} align={'center'}>
+                                    <Image {...css.icons} src={`https://api.piknicuz.com/api/uploads/images/${category?.image_src}`} />
+                                    <Heading onClick={() => setCategoryId(category?.id)} key={index} {...css.names}>
+                                        {category?.name}
+                                    </Heading>
+                                </Flex>
+
                             ))}
                     </Flex>
 
@@ -72,9 +76,12 @@ const Products = () => {
                         {category
                             ?.slice(currentIndexTwo * ITEMS_PER_PAGE_Two, (currentIndexTwo + 1) * ITEMS_PER_PAGE_Two)
                             ?.map((category, index) => (
-                                <Heading onClick={() => setCategoryId(category?.id)} className={`product-title ${category?.id === categoryId ? "product-active" : ""}`} key={index} {...css.names}>
-                                    {category?.name}
-                                </Heading>
+                                <Flex {...css.items} className={`product-title ${category?.id === categoryId ? "product-active" : ""}`} align={'center'}>
+                                    <Image {...css.icons} src={`https://api.piknicuz.com/api/uploads/images/${category?.image_src}`} />
+                                    <Heading onClick={() => setCategoryId(category?.id)} key={index} {...css.names}>
+                                        {category?.name}
+                                    </Heading>
+                                </Flex>
                             ))}
                     </Flex>
 
@@ -183,6 +190,19 @@ const css = {
         },
         fontWeight: "400",
         lineHeight: "36px",
+
+    },
+    next: {
+        color: "#fff",
+        background: "#245D30",
+        borderRadius: "full",
+        cursor: "pointer",
+
+        _hover: {
+            background: "#245D30",
+        }
+    },
+    items: {
         cursor: "pointer",
         padding: {
             base: "5px 15px",
@@ -196,14 +216,8 @@ const css = {
             border: "1px solid #000"
         }
     },
-    next: {
-        color: "#fff",
-        background: "#245D30",
-        borderRadius: "full",
-        cursor: "pointer",
-
-        _hover: {
-            background: "#245D30",
-        }
+    icons: {
+        width: "50px",
+        height: "50px"
     }
 }
