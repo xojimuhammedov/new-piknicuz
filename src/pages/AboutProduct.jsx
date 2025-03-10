@@ -54,7 +54,7 @@ const AboutProduct = () => {
         <Box position={'relative'} p={'24px 0'}>
             <Box className='container about-list'>
                 <Categories />
-                <Flex width={{ base: "100%", lg: '60%' }} gap={'24px'}>
+                <Flex mt={'84px'} width={{ base: "100%", lg: '60%' }} gap={'24px'}>
                     <Swiper
                         onSwiper={setThumbsSwiper}
                         spaceBetween={20}
@@ -212,7 +212,7 @@ const css = {
     right: {
         position: "absolute",
         left: "65%",
-        bottom: "65%",
+        bottom: "60%",
         display: {
             base: "none",
             lg: "block"

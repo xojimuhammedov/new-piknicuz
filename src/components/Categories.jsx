@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Box, Button, Flex, Heading, SimpleGrid, Text } from '@chakra-ui/react';
+import { Box, Button, Flex, Heading, Image, SimpleGrid, Text } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 
 
@@ -39,27 +39,33 @@ const Categories = () => {
     };
     return (
         <Box position={'relative'}>
-            <Flex mb={'36px'} display={{ base: "none", lg: "flex" }} wrap={'nowrap'} justify="space-between" maxW="100%">
+            <Flex mt={'48px'} display={{ base: "none", lg: "flex" }} wrap={'nowrap'} justify="space-between" maxW="100%">
                 {category
                     ?.slice(currentIndex * ITEMS_PER_PAGE, (currentIndex + 1) * ITEMS_PER_PAGE)
                     ?.map((category, index) => (
                         <Link to={`/category/${category?.id}`}>
-                            <Heading key={index} {...css.names}>
-                                {category?.name}
-                            </Heading>
+                            <Flex {...css.items} align={'center'}>
+                                <Image {...css.icons} src={`https://api.piknicuz.com/api/uploads/images/${category?.image_src}`} />
+                                <Heading key={index} {...css.names}>
+                                    {category?.name}
+                                </Heading>
+                            </Flex>
                         </Link>
                     ))}
             </Flex>
 
 
-            <Flex mb={'36px'} display={{ base: "flex", lg: "none" }} gap={'12px'} wrap={'nowrap'} justify="space-between" maxW="100%">
+            <Flex mt={'48px'} display={{ base: "flex", lg: "none" }} gap={'12px'} wrap={'nowrap'} justify="space-between" maxW="100%">
                 {category
                     ?.slice(currentIndexTwo * ITEMS_PER_PAGE_Two, (currentIndexTwo + 1) * ITEMS_PER_PAGE_Two)
                     ?.map((category, index) => (
                         <Link to={`/category/${category?.id}`}>
-                            <Heading key={index} {...css.names}>
-                                {category?.name}
-                            </Heading>
+                            <Flex {...css.items} align={'center'}>
+                                <Image {...css.icons} src={`https://api.piknicuz.com/api/uploads/images/${category?.image_src}`} />
+                                <Heading key={index} {...css.names}>
+                                    {category?.name}
+                                </Heading>
+                            </Flex>
                         </Link>
                     ))}
             </Flex>
@@ -69,11 +75,11 @@ const Categories = () => {
                     <>
                         <Button
                             position="absolute"
-                            top="20%"
+                            top="-80%"
                             left={
                                 {
                                     base: "70%",
-                                    lg: "93%"
+                                    lg: "90%"
                                 }
                             }
                             transform="translateY(-50%)"
@@ -90,7 +96,7 @@ const Categories = () => {
 
                         <Button
                             position="absolute"
-                            top="20%"
+                            top="-80%"
                             right="10px"
                             transform="translateY(-50%)"
                             onClick={() => {
@@ -121,6 +127,22 @@ const css = {
         },
         fontWeight: "400",
         lineHeight: "36px",
+        display: {
+            base: "none",
+            lg: "block"
+        }
+    },
+    next: {
+        color: "#fff",
+        background: "#245D30",
+        borderRadius: "full",
+        cursor: "pointer",
+
+        _hover: {
+            background: "#245D30",
+        }
+    },
+    items: {
         cursor: "pointer",
         padding: {
             base: "5px 15px",
@@ -134,14 +156,8 @@ const css = {
             border: "1px solid #000"
         }
     },
-    next: {
-        color: "#fff",
-        background: "#245D30",
-        borderRadius: "full",
-        cursor: "pointer",
-
-        _hover: {
-            background: "#245D30",
-        }
+    icons: {
+        width: "50px",
+        height: "50px"
     }
 }

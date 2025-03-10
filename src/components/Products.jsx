@@ -30,7 +30,7 @@ const Products = () => {
 
     const ITEMS_PER_PAGE = 4;
 
-    const ITEMS_PER_PAGE_Two = 2;
+    const ITEMS_PER_PAGE_Two = 4;
 
     const totalSlides = Math.ceil(category.length / ITEMS_PER_PAGE);
 
@@ -84,7 +84,6 @@ const Products = () => {
                                 </Flex>
                             ))}
                     </Flex>
-
                     {
                         category.length > 0 ? (
                             <>
@@ -190,7 +189,10 @@ const css = {
         },
         fontWeight: "400",
         lineHeight: "36px",
-
+        display:{
+            base:"none",
+            lg:"block"
+        }
     },
     next: {
         color: "#fff",
