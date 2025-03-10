@@ -134,7 +134,6 @@ const Products = () => {
                         product?.slice(0, 32)?.map((item) => (<Card item={item} />))
                     }
                 </SimpleGrid>
-                <Link href='#' {...css.link}>Hammasini ko'rish</Link>
             </Box>
         </>
     );
