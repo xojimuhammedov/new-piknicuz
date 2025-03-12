@@ -134,7 +134,7 @@ const ProductsPage = () => {
                 {
                     loading ? <Box {...css.loading}>Mahsulot yuklanmoqda...</Box> : <SimpleGrid mb={'60px'} gap={{ base: "24px", lg: '70px 24px' }} columns={{ base: 1, md: 2, xl: 4 }}>
                         {
-                            product?.slice(0, 32)?.map((item) => (<Card item={item} />))
+                            product?.map((item) => (<Card item={item} />))
                         }
                     </SimpleGrid>
                 }
