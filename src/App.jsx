@@ -10,6 +10,7 @@ import ContactPage from './pages/ContactPage'
 import AboutProduct from './pages/AboutProduct'
 import KorzinkaPage from './pages/KorzinkaPage'
 import CategoryProduct from './pages/CategoryProduct'
+import ProductsPage from './pages/ProductPage'
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
         <Route path='/product/:id' element={<AboutProduct />} />
         <Route path='/korzinka' element={<KorzinkaPage />} />
         <Route path='/category/:id' element={<CategoryProduct />} />
+        <Route path='/products' element={<ProductsPage />} />
       </Routes>
       <Footer />
     </>

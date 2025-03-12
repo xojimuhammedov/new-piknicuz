@@ -31,7 +31,10 @@ function NavModal() {
                     </button>
                     <Flex mt="50px" gap="25px" flexDirection="column">
                         <Link onClick={onClose} {...css.link} href='/'>Bosh sahifa</Link>
-                        <Link onClick={onClose} {...css.link} href='#product'>Mahsulotlar</Link>
+                        <Alink onClick={onClose} to={'/products'}>
+                            <Text {...css.link}>Mahsulotlar</Text>
+                        </Alink>
+                        {/* <Link onClick={onClose} {...css.link} href='#product'>Mahsulotlar</Link> */}
                         <Alink onClick={onClose} to={'/contact'}>
                             <Text {...css.link}>Aloqa</Text>
                         </Alink>

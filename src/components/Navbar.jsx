@@ -20,7 +20,7 @@ const Navbar = () => {
                     </Alink>
                     <Flex align={'center'} gap={'24px'}>
                         <Link {...css.link} href='/'>Bosh sahifa</Link>
-                        <Alink to={'/'}>
+                        <Alink to={'/products'}>
                             <Text {...css.link}>Mahsulotlar</Text>
                         </Alink>
                         {/* <Link {...css.link} href='#product'>Mahsulotlar</Link> */}
