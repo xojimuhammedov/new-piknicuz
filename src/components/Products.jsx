@@ -61,9 +61,9 @@ const Products = () => {
                         {category
                             ?.slice(currentIndex * ITEMS_PER_PAGE, (currentIndex + 1) * ITEMS_PER_PAGE)
                             ?.map((category, index) => (
-                                <Flex {...css.items} className={`product-title ${category?.id === categoryId ? "product-active" : ""}`} align={'center'}>
+                                <Flex onClick={() => setCategoryId(category?.id)} {...css.items} className={`product-title ${category?.id === categoryId ? "product-active" : ""}`} align={'center'}>
                                     <Image {...css.icons} src={`https://api.piknicuz.com/api/uploads/images/${category?.image_src}`} />
-                                    <Heading onClick={() => setCategoryId(category?.id)} key={index} {...css.names}>
+                                    <Heading key={index} {...css.names}>
                                         {category?.name}
                                     </Heading>
                                 </Flex>
@@ -76,9 +76,9 @@ const Products = () => {
                         {category
                             ?.slice(currentIndexTwo * ITEMS_PER_PAGE_Two, (currentIndexTwo + 1) * ITEMS_PER_PAGE_Two)
                             ?.map((category, index) => (
-                                <Flex {...css.items} className={`product-title ${category?.id === categoryId ? "product-active" : ""}`} align={'center'}>
+                                <Flex onClick={() => setCategoryId(category?.id)} {...css.items} className={`product-title ${category?.id === categoryId ? "product-active" : ""}`} align={'center'}>
                                     <Image {...css.icons} src={`https://api.piknicuz.com/api/uploads/images/${category?.image_src}`} />
-                                    <Heading onClick={() => setCategoryId(category?.id)} key={index} {...css.names}>
+                                    <Heading key={index} {...css.names}>
                                         {category?.name}
                                     </Heading>
                                 </Flex>
@@ -188,9 +188,9 @@ const css = {
         },
         fontWeight: "400",
         lineHeight: "36px",
-        display:{
-            base:"none",
-            lg:"block"
+        display: {
+            base: "none",
+            lg: "block"
         }
     },
     next: {
