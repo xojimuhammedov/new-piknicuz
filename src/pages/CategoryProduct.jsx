@@ -45,7 +45,7 @@ export default CategoryProduct;
 
 const css = {
     title: {
-        margin: "0",
+        margin: "12px 0",
         textAlign: "center",
         fontSize: {
             base: "25px",

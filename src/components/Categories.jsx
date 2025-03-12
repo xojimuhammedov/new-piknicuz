@@ -16,7 +16,7 @@ const Categories = () => {
 
     const ITEMS_PER_PAGE = 5;
 
-    const ITEMS_PER_PAGE_Two = 2;
+    const ITEMS_PER_PAGE_Two = 3;
 
     const totalSlides = Math.ceil(category.length / ITEMS_PER_PAGE);
 
@@ -39,7 +39,7 @@ const Categories = () => {
     };
     return (
         <Box position={'relative'}>
-            <Flex mt={'48px'} display={{ base: "none", lg: "flex" }} wrap={'nowrap'} justify="space-between" maxW="100%">
+            <Flex mt={'36px'} display={{ base: "none", lg: "flex" }} wrap={'nowrap'} justify="space-between" maxW="100%">
                 {category
                     ?.slice(currentIndex * ITEMS_PER_PAGE, (currentIndex + 1) * ITEMS_PER_PAGE)
                     ?.map((category, index) => (
@@ -55,7 +55,7 @@ const Categories = () => {
             </Flex>
 
 
-            <Flex mt={'48px'} display={{ base: "flex", lg: "none" }} gap={'12px'} wrap={'nowrap'} justify="space-between" maxW="100%">
+            <Flex mt={'36px'} display={{ base: "flex", lg: "none" }} gap={'12px'} wrap={'nowrap'} justify="space-between" maxW="100%">
                 {category
                     ?.slice(currentIndexTwo * ITEMS_PER_PAGE_Two, (currentIndexTwo + 1) * ITEMS_PER_PAGE_Two)
                     ?.map((category, index) => (

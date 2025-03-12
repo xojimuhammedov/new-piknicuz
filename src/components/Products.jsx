@@ -9,7 +9,9 @@ const Products = () => {
     const [categoryId, setCategoryId] = useState(null)
     const [product, setProduct] = useState([])
     const [category, setCategory] = useState([])
+    const [loading, setLoading] = useState(false)
     useEffect(() => {
+        setLoading(true)
         axios.get("https://api.piknicuz.com/api/products")
             .then((res) => {
                 if (categoryId) {
@@ -20,6 +22,7 @@ const Products = () => {
                 }
             })
             .catch((err) => console.log(err))
+            .finally(() => setLoading(false))
     }, [categoryId])
 
     useEffect(() => {
@@ -30,7 +33,7 @@ const Products = () => {
 
     const ITEMS_PER_PAGE = 4;
 
-    const ITEMS_PER_PAGE_Two = 4;
+    const ITEMS_PER_PAGE_Two = 3;
 
     const totalSlides = Math.ceil(category.length / ITEMS_PER_PAGE);
 
@@ -128,11 +131,13 @@ const Products = () => {
                 </Box>
             </Box>
             <Box className='container'>
-                <SimpleGrid mb={'60px'} gap={{ base: "24px", lg: '70px 24px' }} columns={{ base: 1, md: 2, xl: 4 }}>
-                    {
-                        product?.slice(0, 32)?.map((item) => (<Card item={item} />))
-                    }
-                </SimpleGrid>
+                {
+                    loading ? <Box {...css.loading}>Mahsulot yuklanmoqda...</Box> : <SimpleGrid mb={'60px'} gap={{ base: "24px", lg: '70px 24px' }} columns={{ base: 1, md: 2, xl: 4 }}>
+                        {
+                            product?.slice(0, 32)?.map((item) => (<Card item={item} />))
+                        }
+                    </SimpleGrid>
+                }
             </Box>
         </>
     );
@@ -219,5 +224,15 @@ const css = {
     icons: {
         width: "50px",
         height: "50px"
+    },
+    loading: {
+        margin: "25px auto",
+        textAlign: "center",
+        fontSize: {
+            base: "25px",
+
+        },
+        fontWeight: "700",
+        lineHeight: "normal",
     }
 }
