@@ -11,8 +11,6 @@ import NavModal from './NavModal';
 const Navbar = () => {
     const { cart, removeFromCart } = useCart();
 
-    console.log(cart)
-
     return (
         <Box p={'15px 0'}>
             <Box className='container'>
@@ -22,7 +20,10 @@ const Navbar = () => {
                     </Alink>
                     <Flex align={'center'} gap={'24px'}>
                         <Link {...css.link} href='/'>Bosh sahifa</Link>
-                        <Link {...css.link} href='#product'>Mahsulotlar</Link>
+                        <Alink to={'/'}>
+                            <Text {...css.link}>Mahsulotlar</Text>
+                        </Alink>
+                        {/* <Link {...css.link} href='#product'>Mahsulotlar</Link> */}
                         <Alink to={'/contact'}>
                             <Text {...css.link}>Aloqa</Text>
                         </Alink>

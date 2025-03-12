@@ -21,7 +21,7 @@ const AboutProduct = () => {
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     const [loading, setLoading] = useState(true);
     const videoRef = useRef();
-     const { addToCart } = useCart();
+    const { addToCart } = useCart();
 
     useEffect(() => {
         if (videoRef.current && product?.video_src) {
@@ -166,7 +166,7 @@ const css = {
         lineHeight: "normal",
         fontWeight: "700",
         marginBottom: "24px",
-        marginTop:"30px"
+        marginTop: "30px"
     },
     price: {
         fontSize: "28px",
