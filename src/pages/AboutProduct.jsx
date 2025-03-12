@@ -212,7 +212,7 @@ const css = {
     right: {
         position: "absolute",
         left: "65%",
-        bottom: "60%",
+        bottom: "48%",
         display: {
             base: "none",
             lg: "block"
