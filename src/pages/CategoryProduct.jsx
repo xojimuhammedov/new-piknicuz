@@ -57,6 +57,7 @@ const css = {
     loading: {
         margin: "100px auto",
         textAlign: "center",
+        color: "#245D30",
         fontSize: {
             base: "25px",
 

@@ -234,5 +234,6 @@ const css = {
         },
         fontWeight: "700",
         lineHeight: "normal",
+        color: "#245D30",
     }
 }
