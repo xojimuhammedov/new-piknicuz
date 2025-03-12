@@ -29,22 +29,46 @@ const Form = () => {
         setTextValue("");
         setEmail("");
     };
-    let bot = {
-        TOKEN: "8015684576:AAEgmJv1Fp4XDcbHnoh2fYCvNdDEeL2rwB4",
-        chatID: "-1002337598384",
-        message: `
-              Assalomu alaykum sizga yangi habar bor!
-              Ism Familya 👤: ${nameValue}; 
-              Telefon raqami ☎: ${numberValue};
-              Xabari: ${textValue};
-              `,
+
+
+    const isWithinWorkingHours = () => {
+        const now = new Date();
+        const day = now.getDay(); // 0 - Yakshanba, 1 - Dushanba, ..., 6 - Shanba
+        const hours = now.getHours();
+        const minutes = now.getMinutes();
+        const currentTime = hours * 60 + minutes;
+
+        const startWork = 10 * 60 + 30; // 10:30
+        const endWork = 20 * 60; // 20:00
+
+        if (day === 5) return false; // Juma dam olish kuni
+        if (currentTime >= startWork && currentTime <= endWork) {
+            return true;
+        }
+        return false;
     };
 
-    const encodedMessage = encodeURIComponent(bot.message);
+
 
     function sendMessage(e) {
         e.preventDefault();
+        if (!isWithinWorkingHours()) {
+            toast.error("Hozir dam olish vaqti");
+            handleClear();
+            return;
+        }
 
+        let bot = {
+            TOKEN: "8015684576:AAEgmJv1Fp4XDcbHnoh2fYCvNdDEeL2rwB4",
+            chatID: "-1002337598384",
+            message: `
+                  Assalomu alaykum sizga yangi habar bor!
+                  Ism Familya 👤: ${nameValue}; 
+                  Telefon raqami ☎: ${numberValue};
+                  Xabari: ${textValue};
+                  `,
+        };
+        const encodedMessage = encodeURIComponent(bot.message);
         fetch(
             `https://api.telegram.org/bot${bot.TOKEN}/sendMessage?chat_id=${bot.chatID}&text=${encodedMessage}`,
             {
@@ -220,7 +244,7 @@ const css = {
     date: {
         fontSize: "14px",
         lineHeight: "22px",
-        fontWeight:"400",
-        fontStyle:"italic"
+        fontWeight: "400",
+        fontStyle: "italic"
     }
 }

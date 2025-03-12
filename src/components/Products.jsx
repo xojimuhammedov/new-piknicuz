@@ -71,7 +71,6 @@ const Products = () => {
                             ))}
                     </Flex>
 
-
                     <Flex display={{ base: "flex", lg: "none" }} mt={'84px'} gap={'12px'} wrap={'nowrap'} justify="space-between" maxW="100%">
                         {category
                             ?.slice(currentIndexTwo * ITEMS_PER_PAGE_Two, (currentIndexTwo + 1) * ITEMS_PER_PAGE_Two)
