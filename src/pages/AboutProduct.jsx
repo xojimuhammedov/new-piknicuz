@@ -99,7 +99,7 @@ const AboutProduct = () => {
                 </Flex>
                 <Box {...css.right}>
                     <Heading {...css.title}>{product?.title}</Heading>
-                    <Heading {...css.price}>{product?.price} so'm</Heading>
+                    <Heading {...css.price}>Narxi: {product?.price} so'm</Heading>
                     <Text {...css.text}
                         dangerouslySetInnerHTML={{
                             __html: product?.description
@@ -110,7 +110,7 @@ const AboutProduct = () => {
 
                 <Box {...css.rights}>
                     <Heading {...css.title}>{product?.title}</Heading>
-                    <Heading {...css.price}>{product?.price} so'm</Heading>
+                    <Heading {...css.price}>Narxi: {product?.price} so'm</Heading>
                     <Text {...css.text}
                         dangerouslySetInnerHTML={{
                             __html: product?.description
@@ -161,24 +161,24 @@ const css = {
     title: {
         fontSize: {
             base: "24px",
-            lg: "36px"
+            lg: "32px"
         },
         lineHeight: "normal",
         fontWeight: "700",
         marginBottom: "24px",
-        marginTop:"60px"
+        marginTop:"30px"
     },
     price: {
-        fontSize: "32px",
+        fontSize: "28px",
         lineHeight: "normal",
         fontWeight: "700"
     },
     text: {
-        fontSize: "16px",
-        lineHeight: "24px",
+        fontSize: "14px",
+        lineHeight: "20px",
         fontWeight: "500",
         color: "#727272",
-        marginBottom: "43px",
+        marginBottom: "15px",
         width: "100%"
     },
     button: {
@@ -212,7 +212,7 @@ const css = {
     right: {
         position: "absolute",
         left: "65%",
-        bottom: "48%",
+        bottom: "50%",
         display: {
             base: "none",
             lg: "block"
