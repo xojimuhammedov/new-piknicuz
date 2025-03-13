@@ -150,7 +150,7 @@ const css = {
         },
         borderRadius: "30px",
         border: "1px solid #fff",
-        margin: "0 5px",
+       gap:"8px",
 
         _hover: {
             border: "1px solid #000"

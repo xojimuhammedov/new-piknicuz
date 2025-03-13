@@ -31,7 +31,7 @@ const Products = () => {
             .catch((err) => console.log(err))
     }, [])
 
-    const ITEMS_PER_PAGE = 4;
+    const ITEMS_PER_PAGE = 5;
 
     const ITEMS_PER_PAGE_Two = 3;
 
@@ -188,10 +188,10 @@ const css = {
     names: {
         fontSize: {
             base: "12px",
-            lg: "20px"
+            lg: "18px"
         },
         fontWeight: "400",
-        lineHeight: "36px",
+        lineHeight: "24px",
         display: {
             base: "none",
             lg: "block"
@@ -214,6 +214,7 @@ const css = {
             lg: "10px 20px"
         },
         borderRadius: "30px",
+        gap: "8px",
         border: "1px solid #fff",
         margin: "0 5px",
 
