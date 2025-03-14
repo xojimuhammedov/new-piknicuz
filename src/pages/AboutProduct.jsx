@@ -17,11 +17,12 @@ import Categories from '../components/Categories';
 
 const AboutProduct = () => {
     const { id } = useParams()
+    const { addToCart } = useCart();
     const [product, setProduct] = useState([])
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     const [loading, setLoading] = useState(true);
     const videoRef = useRef();
-    const { addToCart } = useCart();
+   
 
     useEffect(() => {
         if (videoRef.current && product?.video_src) {
@@ -116,7 +117,7 @@ const AboutProduct = () => {
                             __html: product?.description
                         }}
                     />
-                    <Button onClick={() => addToCart(item)} {...css.button}>Savatga qo'shish</Button>
+                    <Button onClick={() => addToCart(product)} {...css.buttons}>Savatga qo'shish</Button>
                 </Box>
 
                 <Heading textAlign={'center'} {...css.title}>Mahsulot Videosi va Xususiyatlari</Heading>
@@ -182,6 +183,26 @@ const css = {
         width: "100%"
     },
     button: {
+        background: "#245D30",
+        borderRadius: "62px",
+        height: "45px",
+        border: "none",
+        width: {
+            base: "100%",
+            lg: "300px"
+        },
+        cursor: "pointer",
+        fontSize: "16px",
+        lineHeight: "24px",
+        fontWeight: "500",
+        color: "#fff",
+        transition: "0.3s",
+
+        _hover: {
+            background: "#245D30",
+        }
+    },
+    buttons: {
         background: "#245D30",
         borderRadius: "62px",
         height: "45px",
