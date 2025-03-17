@@ -31,7 +31,7 @@ const ProductsPage = () => {
             .catch((err) => console.log(err))
     }, [])
 
-    const ITEMS_PER_PAGE = 4;
+    const ITEMS_PER_PAGE = 5;
 
     const ITEMS_PER_PAGE_Two = 3;
 

@@ -3,19 +3,26 @@ import React, { useEffect, useState } from 'react';
 import Card from './Card';
 import axios from 'axios';
 
+import TopImage from '../assets/top.jpg'
+
 const Products = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [currentIndexTwo, setCurrentIndexTwo] = useState(0);
     const [categoryId, setCategoryId] = useState(null)
     const [product, setProduct] = useState([])
     const [category, setCategory] = useState([])
+    const [top, setTop] = useState(false)
     const [loading, setLoading] = useState(false)
     useEffect(() => {
         setLoading(true)
         axios.get("https://api.piknicuz.com/api/products")
             .then((res) => {
                 if (categoryId) {
-                    setProduct(res?.data?.data?.filter((item) => item.category_id === categoryId))
+                    setProduct(res?.data?.data?.filter((item) => item?.category_id === categoryId))
+                    // setProduct(res?.data?.data?.filter((item) => item?.is_active === true))
+                }
+                else if (top) {
+                    setProduct(res?.data?.data?.filter((item) => item?.is_active === true))
                 }
                 else {
                     setProduct(res?.data?.data)
@@ -23,7 +30,9 @@ const Products = () => {
             })
             .catch((err) => console.log(err))
             .finally(() => setLoading(false))
-    }, [categoryId])
+    }, [categoryId, top])
+
+    // console.log(product)
 
     useEffect(() => {
         axios.get("https://api.piknicuz.com/api/categories")
@@ -31,7 +40,7 @@ const Products = () => {
             .catch((err) => console.log(err))
     }, [])
 
-    const ITEMS_PER_PAGE = 5;
+    const ITEMS_PER_PAGE = 4;
 
     const ITEMS_PER_PAGE_Two = 3;
 
@@ -61,6 +70,15 @@ const Products = () => {
                 <Box className='container'>
                     <Heading {...css.title}>Kategoriya va Mahsulotlar</Heading>
                     <Flex display={{ base: "none", lg: "flex" }} mt={'84px'} wrap={'nowrap'} justify="space-between" maxW="100%">
+                        <Flex onClick={() => {
+                            setTop(true)
+                            setCategoryId(null)
+                        }}  {...css.items} align={'center'}>
+                            <Image {...css.icons} src={TopImage} />
+                            <Heading  {...css.names}>
+                                Ommabop
+                            </Heading>
+                        </Flex>
                         {category
                             ?.slice(currentIndex * ITEMS_PER_PAGE, (currentIndex + 1) * ITEMS_PER_PAGE)
                             ?.map((category, index) => (
@@ -75,6 +93,15 @@ const Products = () => {
                     </Flex>
 
                     <Flex display={{ base: "flex", lg: "none" }} mt={'84px'} gap={'12px'} wrap={'nowrap'} justify="space-between" maxW="100%">
+                        <Flex onClick={() => {
+                            setTop(true)
+                            setCategoryId(null)
+                        }}  {...css.items} align={'center'}>
+                            <Image {...css.icons} src={TopImage} />
+                            <Heading  {...css.names}>
+                                Ommabop
+                            </Heading>
+                        </Flex>
                         {category
                             ?.slice(currentIndexTwo * ITEMS_PER_PAGE_Two, (currentIndexTwo + 1) * ITEMS_PER_PAGE_Two)
                             ?.map((category, index) => (
@@ -137,7 +164,6 @@ const Products = () => {
                     <SimpleGrid mb={'60px'} gap={{ base: "24px", lg: '70px 24px' }} columns={{ base: 1, md: 2, xl: 4 }}>
                         {
                             product
-                                ?.filter((item) => item?.is_active === true) // is_active === true bo'lganlarni olish
                                 ?.slice(0, 32) // Birinchi 32 tasini olish
                                 ?.map((item) => (<Card key={item.id} item={item} />)) // Mapping qilish
                         }

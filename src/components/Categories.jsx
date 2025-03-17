@@ -40,6 +40,12 @@ const Categories = () => {
     return (
         <Box position={'relative'}>
             <Flex mt={'36px'} display={{ base: "none", lg: "flex" }} wrap={'nowrap'} justify="space-between" maxW="100%">
+                {/* <Flex onClick={() => setTop(true)}  {...css.items} align={'center'}>
+                    <Image {...css.icons} src={TopImage} />
+                    <Heading  {...css.names}>
+                        Ommabop
+                    </Heading>
+                </Flex> */}
                 {category
                     ?.slice(currentIndex * ITEMS_PER_PAGE, (currentIndex + 1) * ITEMS_PER_PAGE)
                     ?.map((category, index) => (
@@ -150,7 +156,7 @@ const css = {
         },
         borderRadius: "30px",
         border: "1px solid #fff",
-       gap:"8px",
+        gap: "8px",
 
         _hover: {
             border: "1px solid #000"
