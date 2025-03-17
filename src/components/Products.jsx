@@ -131,13 +131,18 @@ const Products = () => {
                 </Box>
             </Box>
             <Box className='container'>
-                {
-                    loading ? <Box {...css.loading}>Mahsulot yuklanmoqda...</Box> : <SimpleGrid mb={'60px'} gap={{ base: "24px", lg: '70px 24px' }} columns={{ base: 1, md: 2, xl: 4 }}>
+                {loading ? (
+                    <Box {...css.loading}>Mahsulot yuklanmoqda...</Box>
+                ) : (
+                    <SimpleGrid mb={'60px'} gap={{ base: "24px", lg: '70px 24px' }} columns={{ base: 1, md: 2, xl: 4 }}>
                         {
-                            product?.slice(0, 32)?.map((item) => (<Card item={item} />))
+                            product
+                                ?.filter((item) => item?.is_active === true) // is_active === true bo'lganlarni olish
+                                ?.slice(0, 32) // Birinchi 32 tasini olish
+                                ?.map((item) => (<Card key={item.id} item={item} />)) // Mapping qilish
                         }
                     </SimpleGrid>
-                }
+                )}
             </Box>
         </>
     );
