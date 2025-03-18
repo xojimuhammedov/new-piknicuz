@@ -109,11 +109,21 @@
     justify-content: center;
 }
 
+.header-video {
+    object-fit: cover;
+    border-radius: 10px;
+    height: 460px;
+    width: 90%;
+}
+
 
 @media (max-width: 768px) {
     .course-video {
         width: 100%;
         height: auto;
+    }
+    .header-video{
+        width: 100%;
     }
 
     .mySwiper-list {

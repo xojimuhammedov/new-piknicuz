@@ -1,9 +1,20 @@
 import { Box, Flex, Heading, Image, Link, Text } from '@chakra-ui/react';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import HeaderImage from '../assets/image.png'
+import HeaderVideo from '../assets/video.mp4'
 
 const Header = () => {
+    const videoRef = useRef();
+
+    useEffect(() => {
+        if (videoRef.current) {
+            videoRef.current.muted = true; // Autoplay ishlashi uchun ovozni o‘chirib qo‘yish
+            videoRef.current.play().catch((error) => {
+                console.error("Video autoplay failed:", error);
+            });
+        }
+    }, [HeaderVideo]);
     return (
         <Box p={{ base: "24px 0", lg: '60px 0' }}>
             <Box className='container'>
@@ -29,7 +40,12 @@ const Header = () => {
                             </Flex>
                         </Flex>
                     </Box>
-                    <Image {...css.image} src={HeaderImage} />
+                    <video className="header-video" ref={videoRef} autoPlay loop controls>
+                        <source
+                            src={HeaderVideo}
+                            type="video/mp4"
+                        />
+                    </video>
                 </Flex>
             </Box>
         </Box>
