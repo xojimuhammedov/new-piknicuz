@@ -1,13 +1,49 @@
 import { Box, Button, Flex, Heading, Image, Link, SimpleGrid, Text } from '@chakra-ui/react';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Card from './Card';
 import axios from 'axios';
 
 import TopImage from '../assets/top.jpg'
 
+import Slider from 'react-slick';
+
+
+var settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 5,
+    initialSlide: 5,
+    responsive: [
+        {
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                infinite: true,
+                dots: false
+            }
+        },
+        {
+            breakpoint: 780,
+            settings: {
+                slidesToShow: 4,
+                slidesToScroll: 4,
+                initialSlide: 4
+            }
+        },
+    ]
+};
+
 const Products = () => {
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [currentIndexTwo, setCurrentIndexTwo] = useState(0);
+    let sliderRef = useRef(null);
+    const next = () => {
+        sliderRef.slickNext();
+    };
+    const previous = () => {
+        sliderRef.slickPrev();
+    };
     const [categoryId, setCategoryId] = useState(null)
     const [product, setProduct] = useState([])
     const [category, setCategory] = useState([])
@@ -32,129 +68,77 @@ const Products = () => {
             .finally(() => setLoading(false))
     }, [categoryId, top])
 
-    // console.log(product)
-
     useEffect(() => {
         axios.get("https://api.piknicuz.com/api/categories")
             .then((res) => setCategory(res?.data?.data))
             .catch((err) => console.log(err))
     }, [])
 
-    const ITEMS_PER_PAGE = 4;
-
-    const ITEMS_PER_PAGE_Two = 3;
-
-    const totalSlides = Math.ceil(category.length / ITEMS_PER_PAGE);
-
-    const nextSlide = () => {
-        setCurrentIndex((prev) => (prev < totalSlides - 1 ? prev + 1 : 0));
-    };
-
-    const prevSlide = () => {
-        setCurrentIndex((prev) => (prev > 0 ? prev - 1 : totalSlides - 1));
-    };
-
-    const totalSlidesTwo = Math.ceil(category.length / ITEMS_PER_PAGE_Two);
-
-    const nextSlideTwo = () => {
-        setCurrentIndexTwo((prev) => (prev < totalSlidesTwo - 1 ? prev + 1 : 0));
-    };
-
-    const prevSlideTwo = () => {
-        setCurrentIndexTwo((prev) => (prev > 0 ? prev - 1 : totalSlidesTwo - 1));
-    };
-
     return (
         <>
             <Box id='product' position="relative" className='products' p={'60px 0'}>
                 <Box className='container'>
                     <Heading {...css.title}>Kategoriya va Mahsulotlar</Heading>
-                    <Flex display={{ base: "none", lg: "flex" }} mt={'84px'} wrap={'nowrap'} justify="space-between" maxW="100%">
-                        <Flex onClick={() => {
-                            setTop(true)
-                            setCategoryId(null)
-                        }}  {...css.items} align={'center'}>
+                    <Slider
+                        style={{ marginTop: "72px" }}
+                        ref={slider => {
+                            sliderRef = slider;
+                        }}
+                        {...settings}>
+                        <Flex
+                            display={'flex !important'}
+                            onClick={() => {
+                                setTop(true)
+                                setCategoryId(null)
+                            }}  {...css.items} align={'center'}>
                             <Image {...css.icons} src={TopImage} />
                             <Heading  {...css.names}>
                                 Ommabop
                             </Heading>
                         </Flex>
                         {category
-                            ?.slice(currentIndex * ITEMS_PER_PAGE, (currentIndex + 1) * ITEMS_PER_PAGE)
                             ?.map((category, index) => (
-                                <Flex onClick={() => setCategoryId(category?.id)} {...css.items} className={`product-title ${category?.id === categoryId ? "product-active" : ""}`} align={'center'}>
-                                    <Image {...css.icons} src={`https://api.piknicuz.com/api/uploads/images/${category?.image_src}`} />
-                                    <Heading key={index} {...css.names}>
-                                        {category?.name}
-                                    </Heading>
-                                </Flex>
-
-                            ))}
-                    </Flex>
-
-                    <Flex display={{ base: "flex", lg: "none" }} mt={'84px'} gap={'12px'} wrap={'nowrap'} justify="space-between" maxW="100%">
-                        <Flex onClick={() => {
-                            setTop(true)
-                            setCategoryId(null)
-                        }}  {...css.items} align={'center'}>
-                            <Image {...css.icons} src={TopImage} />
-                            <Heading  {...css.names}>
-                                Ommabop
-                            </Heading>
-                        </Flex>
-                        {category
-                            ?.slice(currentIndexTwo * ITEMS_PER_PAGE_Two, (currentIndexTwo + 1) * ITEMS_PER_PAGE_Two)
-                            ?.map((category, index) => (
-                                <Flex onClick={() => setCategoryId(category?.id)} {...css.items} className={`product-title ${category?.id === categoryId ? "product-active" : ""}`} align={'center'}>
+                                <Flex
+                                    display={'flex !important'}
+                                    onClick={() => setCategoryId(category?.id)} {...css.items} className={`product-title ${category?.id === categoryId ? "product-active" : ""}`} align={'center'}>
                                     <Image {...css.icons} src={`https://api.piknicuz.com/api/uploads/images/${category?.image_src}`} />
                                     <Heading key={index} {...css.names}>
                                         {category?.name}
                                     </Heading>
                                 </Flex>
                             ))}
-                    </Flex>
-                    {
-                        category.length > 0 ? (
-                            <>
-                                <Button
-                                    position="absolute"
-                                    top="50%"
-                                    left={
-                                        {
-                                            base: "70%",
-                                            lg: "93%"
-                                        }
-                                    }
-                                    transform="translateY(-50%)"
-                                    onClick={() => {
-                                        prevSlide()
-                                        prevSlideTwo()
-                                    }}
-                                    px={4}
-                                    py={2}
-                                    {...css.next}
-                                >
-                                    ❮
-                                </Button>
-
-                                <Button
-                                    position="absolute"
-                                    top="50%"
-                                    right="10px"
-                                    transform="translateY(-50%)"
-                                    onClick={() => {
-                                        nextSlide()
-                                        nextSlideTwo()
-                                    }}
-                                    px={4}
-                                    py={2}
-                                    {...css.next}
-                                >
-                                    ❯
-                                </Button>
-                            </>
-                        ) : null
-                    }
+                    </Slider>
+                    <div>
+                        <Button
+                            position="absolute"
+                            top="45%"
+                            left={
+                                {
+                                    base: "70%",
+                                    lg: "93%"
+                                }
+                            }
+                            transform="translateY(-50%)"
+                            onClick={previous}
+                            px={4}
+                            py={2}
+                            {...css.next}
+                        >
+                            ❮
+                        </Button>
+                        <Button
+                            position="absolute"
+                            top="45%"
+                            right="10px"
+                            transform="translateY(-50%)"
+                            onClick={next}
+                            px={4}
+                            py={2}
+                            {...css.next}
+                        >
+                            ❯
+                        </Button>
+                    </div>
                 </Box>
             </Box>
             <Box className='container'>

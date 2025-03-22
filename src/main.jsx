@@ -7,6 +7,7 @@ import { CartProvider } from './context/CardContext.jsx'
 import { ChakraProvider } from '@chakra-ui/react'
 import { ToastContainer } from 'react-toastify'
 
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ChakraProvider>

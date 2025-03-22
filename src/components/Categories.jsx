@@ -1,56 +1,66 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { Box, Button, Flex, Heading, Image, SimpleGrid, Text } from '@chakra-ui/react';
+import React, { useEffect, useRef, useState } from 'react';
+import { Box, Button, Flex, Heading, Image } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
+
+import Slider from 'react-slick';
+
+
+var settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 5,
+    initialSlide: 5,
+    responsive: [
+        {
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                infinite: true,
+                dots: false
+            }
+        },
+        {
+            breakpoint: 780,
+            settings: {
+                slidesToShow: 4,
+                slidesToScroll: 4,
+                initialSlide: 4
+            }
+        },
+    ]
+};
 
 
 const Categories = () => {
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [currentIndexTwo, setCurrentIndexTwo] = useState(0);
+    let sliderRef = useRef(null);
+    const next = () => {
+        sliderRef.slickNext();
+    };
+    const previous = () => {
+        sliderRef.slickPrev();
+    };
     const [category, setCategory] = useState([])
     useEffect(() => {
         axios.get("https://api.piknicuz.com/api/categories")
             .then((res) => setCategory(res?.data?.data))
             .catch((err) => console.log(err))
     }, [])
-
-    const ITEMS_PER_PAGE = 5;
-
-    const ITEMS_PER_PAGE_Two = 3;
-
-    const totalSlides = Math.ceil(category.length / ITEMS_PER_PAGE);
-
-    const nextSlide = () => {
-        setCurrentIndex((prev) => (prev < totalSlides - 1 ? prev + 1 : 0));
-    };
-
-    const prevSlide = () => {
-        setCurrentIndex((prev) => (prev > 0 ? prev - 1 : totalSlides - 1));
-    };
-
-    const totalSlidesTwo = Math.ceil(category.length / ITEMS_PER_PAGE_Two);
-
-    const nextSlideTwo = () => {
-        setCurrentIndexTwo((prev) => (prev < totalSlidesTwo - 1 ? prev + 1 : 0));
-    };
-
-    const prevSlideTwo = () => {
-        setCurrentIndexTwo((prev) => (prev > 0 ? prev - 1 : totalSlidesTwo - 1));
-    };
     return (
         <Box position={'relative'}>
-            <Flex mt={'36px'} display={{ base: "none", lg: "flex" }} wrap={'nowrap'} justify="space-between" maxW="100%">
-                {/* <Flex onClick={() => setTop(true)}  {...css.items} align={'center'}>
-                    <Image {...css.icons} src={TopImage} />
-                    <Heading  {...css.names}>
-                        Ommabop
-                    </Heading>
-                </Flex> */}
+            <Slider
+                style={{ marginTop: "48px" }}
+                ref={slider => {
+                    sliderRef = slider;
+                }}
+                {...settings}>
                 {category
-                    ?.slice(currentIndex * ITEMS_PER_PAGE, (currentIndex + 1) * ITEMS_PER_PAGE)
                     ?.map((category, index) => (
                         <Link to={`/category/${category?.id}`}>
-                            <Flex {...css.items} align={'center'}>
+                            <Flex scrollSnapAlign="start" {...css.items} align={'center'}>
                                 <Image {...css.icons} src={`https://api.piknicuz.com/api/uploads/images/${category?.image_src}`} />
                                 <Heading key={index} {...css.names}>
                                     {category?.name}
@@ -58,66 +68,48 @@ const Categories = () => {
                             </Flex>
                         </Link>
                     ))}
-            </Flex>
-
-
-            <Flex mt={'36px'} display={{ base: "flex", lg: "none" }} gap={'12px'} wrap={'nowrap'} justify="space-between" maxW="100%">
-                {category
-                    ?.slice(currentIndexTwo * ITEMS_PER_PAGE_Two, (currentIndexTwo + 1) * ITEMS_PER_PAGE_Two)
-                    ?.map((category, index) => (
-                        <Link to={`/category/${category?.id}`}>
-                            <Flex {...css.items} align={'center'}>
-                                <Image {...css.icons} src={`https://api.piknicuz.com/api/uploads/images/${category?.image_src}`} />
-                                <Heading key={index} {...css.names}>
-                                    {category?.name}
-                                </Heading>
-                            </Flex>
-                        </Link>
-                    ))}
-            </Flex>
-
-            {
-                category.length > 0 ? (
-                    <>
-                        <Button
-                            position="absolute"
-                            top="-80%"
-                            left={
-                                {
-                                    base: "70%",
-                                    lg: "90%"
-                                }
-                            }
-                            transform="translateY(-50%)"
-                            onClick={() => {
-                                prevSlide()
-                                prevSlideTwo()
-                            }}
-                            px={4}
-                            py={2}
-                            {...css.next}
-                        >
-                            ❮
-                        </Button>
-
-                        <Button
-                            position="absolute"
-                            top="-80%"
-                            right="10px"
-                            transform="translateY(-50%)"
-                            onClick={() => {
-                                nextSlide()
-                                nextSlideTwo()
-                            }}
-                            px={4}
-                            py={2}
-                            {...css.next}
-                        >
-                            ❯
-                        </Button>
-                    </>
-                ) : null
-            }
+            </Slider>
+            <div>
+                <Button
+                    position="absolute"
+                    top={
+                        {
+                            base: "-80%",
+                            lg: "-20%"
+                        }
+                    }
+                    left={
+                        {
+                            base: "70%",
+                            lg: "90%"
+                        }
+                    }
+                    transform="translateY(-50%)"
+                    onClick={previous}
+                    px={4}
+                    py={2}
+                    {...css.next}
+                >
+                    ❮
+                </Button>
+                <Button
+                    position="absolute"
+                    top={
+                        {
+                            base: "-80%",
+                            lg: "-20%"
+                        }
+                    }
+                    right="10px"
+                    transform="translateY(-50%)"
+                    onClick={next}
+                    px={4}
+                    py={2}
+                    {...css.next}
+                >
+                    ❯
+                </Button>
+            </div>
         </Box>
     );
 }
@@ -129,10 +121,10 @@ const css = {
     names: {
         fontSize: {
             base: "12px",
-            lg: "20px"
+            lg: "18px"
         },
         fontWeight: "400",
-        lineHeight: "36px",
+        lineHeight: "26px",
         display: {
             base: "none",
             lg: "block"
@@ -163,7 +155,10 @@ const css = {
         }
     },
     icons: {
-        width: "50px",
+        width: {
+            base: "100%",
+            lg: "50px"
+        },
         height: "50px",
         objectFit: "contain"
     }
