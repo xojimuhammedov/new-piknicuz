@@ -16,9 +16,9 @@ const Header = () => {
         }
     }, [HeaderVideo]);
     return (
-        <Box p={{ base: "24px 0", lg: '60px 0' }}>
+        <Box p={{ base: "0", lg: '60px 0' }}>
             <Box className='container'>
-                <Flex gap={'24px'} flexDirection={{ base: "column", lg: "row" }} justify={'space-between'}>
+                <Flex gap={'24px'} display={{ base: "none", md: "flex" }} flexDirection={{ base: "column", lg: "row" }} justify={'space-between'}>
                     <Box>
                         <Heading {...css.title}>
                             Zo'r jihozlar bilan sarguzashtlarni kashf eting
