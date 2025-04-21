@@ -49,6 +49,7 @@ const Products = () => {
     const [category, setCategory] = useState([])
     const [top, setTop] = useState(false)
     const [loading, setLoading] = useState(false)
+    const [categoryLoading, setCategoryLoading] = useState(false)
     useEffect(() => {
         setLoading(true)
         axios.get("https://api.piknicuz.com/api/products")
@@ -69,9 +70,11 @@ const Products = () => {
     }, [categoryId, top])
 
     useEffect(() => {
+        setCategoryLoading(true)
         axios.get("https://api.piknicuz.com/api/categories")
             .then((res) => setCategory(res?.data?.data))
             .catch((err) => console.log(err))
+            .finally(() => setCategoryLoading(false))
     }, [])
 
     return (
@@ -79,13 +82,8 @@ const Products = () => {
             <Box id='product' position="relative" className='products' p={'60px 0'}>
                 <Box className='container'>
                     <Heading {...css.title}>Kategoriya va Mahsulotlar</Heading>
-                    <Slider
-                        style={{ marginTop: "72px" }}
-                        ref={slider => {
-                            sliderRef = slider;
-                        }}
-                        {...settings}>
-                        <Flex
+                    {
+                        categoryLoading ? <Flex
                             display={'flex !important'}
                             onClick={() => {
                                 setTop(true)
@@ -95,19 +93,38 @@ const Products = () => {
                             <Heading  {...css.names}>
                                 Ommabop
                             </Heading>
-                        </Flex>
-                        {category
-                            ?.map((category, index) => (
+                        </Flex> : (
+                            <Slider
+                                style={{ marginTop: "72px" }}
+                                ref={slider => {
+                                    sliderRef = slider;
+                                }}
+                                {...settings}>
                                 <Flex
                                     display={'flex !important'}
-                                    onClick={() => setCategoryId(category?.id)} {...css.items} className={`product-title ${category?.id === categoryId ? "product-active" : ""}`} align={'center'}>
-                                    <Image {...css.icons} src={`https://api.piknicuz.com/api/uploads/images/${category?.image_src}`} />
-                                    <Heading key={index} {...css.names}>
-                                        {category?.name}
+                                    onClick={() => {
+                                        setTop(true)
+                                        setCategoryId(null)
+                                    }}  {...css.items} align={'center'}>
+                                    <Image {...css.icons} src={TopImage} />
+                                    <Heading  {...css.names}>
+                                        Ommabop
                                     </Heading>
                                 </Flex>
-                            ))}
-                    </Slider>
+                                {category
+                                    ?.map((category, index) => (
+                                        <Flex
+                                            display={'flex !important'}
+                                            onClick={() => setCategoryId(category?.id)} {...css.items} className={`product-title ${category?.id === categoryId ? "product-active" : ""}`} align={'center'}>
+                                            <Image {...css.icons} src={`https://api.piknicuz.com/api/uploads/images/${category?.image_src}`} />
+                                            <Heading key={index} {...css.names}>
+                                                {category?.name}
+                                            </Heading>
+                                        </Flex>
+                                    ))}
+                            </Slider>
+                        )
+                    }
                     <div>
                         <Button
                             position="absolute"

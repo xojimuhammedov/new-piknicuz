@@ -1,7 +1,5 @@
-import { Box, Flex, Heading, Image, Link, Text } from '@chakra-ui/react';
+import { Box, Flex, Heading, Link, Text } from '@chakra-ui/react';
 import React, { useEffect, useRef } from 'react';
-
-import HeaderImage from '../assets/image.png'
 import HeaderVideo from '../assets/video.mp4'
 
 const Header = () => {
